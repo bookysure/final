@@ -16,6 +16,7 @@ export const AuthStack = () => {
                 animation: 'slide_from_right',
             }}>
             <AuthStackNav.Screen component={Screens.Splash} name="Splash" />
+            <AuthStackNav.Screen component={Screens.LoginScreen} name="LoginScreen" />
         </AuthStackNav.Navigator>
     );
 };
