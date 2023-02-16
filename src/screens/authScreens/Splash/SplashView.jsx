@@ -1,9 +1,12 @@
-import { Text, View } from "react-native";
+import { Text, View, Button } from "react-native";
 
-export const SplashView = () => {
+export const SplashView = ({ onGoogleButtonPress }) => {
     return (
         <View>
-            <Text style={{ color: 'white' }}>hello</Text>
+            <Button
+                title="Google Sign-In"
+                onPress={() => onGoogleButtonPress().then(() => console.log('Signed in with Google!'))}
+            />
         </View>
     )
 }

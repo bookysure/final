@@ -26,7 +26,7 @@ const Button = ({ onPress, value = '', disabled = false, customStyle = {}, leftI
                     <FastImage source={leftIcon} style={styles.imageStyle} />
                 </View>
             ) : null}
-            <Text children={value} color={textColor} fontFamily={fonts.OS_MEDIUM} />
+            <Text children={value} color={textColor} />
         </Touchable>
     );
 };
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         borderColor: colors.purple
     },
     disabled: {
-        backgroundColor: colors.purple,
+        backgroundColor: colors.lightPurpule,
         color: colors.white
     },
     imageStyle: {
