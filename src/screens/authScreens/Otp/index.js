@@ -3,6 +3,8 @@ import { Alert, View } from 'react-native';
 import { navigate } from '../../../navigation';
 import { OtpView } from './OtpView';
 import firestore from '@react-native-firebase/firestore';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { STORAGE_KEYS } from '../../../helpers/constants/storageKeys';
 
 const OtpScreen = (props) => {
 	const [otp, setOtp] = useState('');
@@ -19,6 +21,7 @@ const OtpScreen = (props) => {
 				foundUser.forEach((result) => {
 					console.log(result.data());
 					firestore().collection('Users').doc(result.data().uid).update({ lastSignIn: new Date() });
+					AsyncStorage.setItem(STORAGE_KEYS.UID, uid);
 				});
 			} catch (error) {
 				console.log('Error in getting account');

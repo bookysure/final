@@ -3,7 +3,7 @@ import { Text } from "../../../components";
 import { colors, screenHeight } from "../../../helpers/styles";
 import { Button } from "../../../widgets";
 
-export const LocationView = () => {
+export const LocationView = ({ getLocation }) => {
     return (
         <View style={styles.container}>
             <View style={{
@@ -17,7 +17,7 @@ export const LocationView = () => {
                     paddingVertical: 50
                 }}
             >
-                <Button onPress={() => { }} value={'Enable'} />
+                <Button onPress={getLocation} value={'Enable'} />
             </View>
 
         </View>

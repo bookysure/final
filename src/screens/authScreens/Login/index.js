@@ -16,6 +16,12 @@ const LoginScreen = () => {
 		GoogleSignin.signOut();
 	}, []);
 
+	const saveUserData = (uid) => {
+		if (uid) {
+			AsyncStorage.setItem(STORAGE_KEYS.UID, uid);
+		}
+	};
+
 	const saveUser = async (user, idToken) => {
 		const additional = user?.additionalUserInfo?.profile;
 		const profile = user?.user;
@@ -35,6 +41,7 @@ const LoginScreen = () => {
 			lastSignIn: new Date()
 		};
 		console.log(data);
+		saveUserData(profile?.uid);
 		try {
 			await firestore().collection('Users').doc(profile?.uid).set(data);
 		} catch (error) {
@@ -49,6 +56,7 @@ const LoginScreen = () => {
 			if (foundUser) {
 				foundUser.update({ token, lastSignIn: new Date() });
 			}
+			saveUserData(profile?.uid);
 		} catch (error) {
 			console.log(error);
 		}
@@ -82,7 +90,7 @@ const LoginScreen = () => {
 		} else {
 			updateUser(result, idToken);
 		}
-		// navigate('LocationScreen', undefined);
+		navigate('LocationScreen', undefined);
 	};
 
 	const sendOtpTophone = async () => {
