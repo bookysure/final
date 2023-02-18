@@ -1,27 +1,24 @@
 import { SplashView } from './SplashView';
 import auth from '@react-native-firebase/auth';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
-
-
+import firestore from '@react-native-firebase/firestore';
+import { useEffect } from 'react';
 
 const Splash = () => {
-    async function onGoogleButtonPress() {
-        // Check if your device supports Google Play
-        await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-        // Get the users ID token
-        const { idToken } = await GoogleSignin.signIn();
+	const getUsers = async () => {
+		firestore()
+			?.collection('ToDos')
+			?.onSnapshot((result) => {
+				result.forEach((doc) => {
+					console.log(doc.data());
+				});
+			});
+	};
 
-        console.log({ idToken });
+	useEffect(() => {
+		getUsers();
+	}, []);
 
-        // Create a Google credential with the token
-        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-        console.log({ googleCredential });
-
-        // Sign-in the user with the credential
-        return auth().signInWithCredential(googleCredential);
-    }
-    return <SplashView onGoogleButtonPress={onGoogleButtonPress} />;
+	return <SplashView />;
 };
 
 export default Splash;

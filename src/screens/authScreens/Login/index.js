@@ -3,7 +3,11 @@ import { LoginView } from './LoginView';
 
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import firestore from '@react-native-firebase/firestore';
 import { navigate } from '../../../navigation';
+import { Platform } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { STORAGE_KEYS } from '../../../helpers/constants/storageKeys';
 
 const LoginScreen = () => {
 	const [phoneNumber, setPhoneNumber] = useState('');
@@ -11,6 +15,53 @@ const LoginScreen = () => {
 	useEffect(() => {
 		GoogleSignin.signOut();
 	}, []);
+
+	const saveUser = async (user, idToken) => {
+		const additional = user?.additionalUserInfo?.profile;
+		const profile = user?.user;
+		const fcm_token = await AsyncStorage.getItem(STORAGE_KEYS.FCM);
+		const data = {
+			firstName: additional?.given_name || '',
+			lastName: additional?.family_name || '',
+			fullName: profile?.displayName || '',
+			profilePicture: profile?.photoURL || '',
+			email: profile?.email || '',
+			phoneNumber: profile?.phoneNumber || '',
+			uid: profile?.uid || '',
+			isSignedIn: true,
+			deviceToken: fcm_token || '',
+			deviceType: Platform.OS || '',
+			token: idToken || '',
+			lastSignIn: new Date()
+		};
+		console.log(data);
+		try {
+			await firestore().collection('Users').doc(profile?.uid).set(data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const updateUser = async (user, token) => {
+		const profile = user?.user;
+		try {
+			const foundUser = await firestore().collection('Users').doc(profile?.uid);
+			if (foundUser) {
+				foundUser.update({ token, lastSignIn: new Date() });
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const findUserByPhoneNumber = async () => {
+		const foundUser = await firestore().collection('Users').where('phoneNumber', '==', phoneNumber).get();
+
+		if (foundUser.empty) {
+			alert('No account associated with this phone number was found!');
+		}
+		return foundUser.empty;
+	};
 
 	const googleSignIn = async () => {
 		await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
@@ -23,21 +74,27 @@ const LoginScreen = () => {
 		const googleCredential = auth.GoogleAuthProvider.credential(idToken);
 
 		console.log({ googleCredential });
-
-		navigate('LocationScreen', undefined);
-
 		// Sign-in the user with the credential
-		return auth().signInWithCredential(googleCredential);
+		const result = await auth().signInWithCredential(googleCredential);
+		console.log(result);
+		if (result?.additionalUserInfo?.isNewUser) {
+			saveUser(result, idToken);
+		} else {
+			updateUser(result, idToken);
+		}
+		// navigate('LocationScreen', undefined);
 	};
 
 	const sendOtpTophone = async () => {
-		if (phoneNumber.length == 10) {
-			try {
-				const confirmation = await auth().signInWithPhoneNumber(`+91 ${phoneNumber}`);
-				navigate('OtpScreen', { phoneNumber, confirmation });
-				console.log(confirmation);
-			} catch (error) {
-				console.log(error, 'in sending otp');
+		if (findUserByPhoneNumber()) {
+			if (phoneNumber.length == 10) {
+				try {
+					const confirmation = await auth().signInWithPhoneNumber(`+91 ${phoneNumber}`);
+					navigate('OtpScreen', { phoneNumber, confirmation });
+					console.log(confirmation);
+				} catch (error) {
+					console.log(error, 'in sending otp');
+				}
 			}
 		}
 	};

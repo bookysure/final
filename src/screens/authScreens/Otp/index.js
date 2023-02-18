@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Alert, View } from 'react-native';
 import { navigate } from '../../../navigation';
 import { OtpView } from './OtpView';
+import firestore from '@react-native-firebase/firestore';
 
 const OtpScreen = (props) => {
 	const [otp, setOtp] = useState('');
@@ -12,11 +13,21 @@ const OtpScreen = (props) => {
 		console.log(otp);
 		try {
 			const result = await confirmation.confirm(otp);
-			console.log({ result });
+			console.log(result?.user);
+			try {
+				const foundUser = await firestore().collection('Users').where('phoneNumber', '==', phoneNumber).get();
+				foundUser.forEach((result) => {
+					console.log(result.data());
+					firestore().collection('Users').doc(result.data().uid).update({ lastSignIn: new Date() });
+				});
+			} catch (error) {
+				console.log('Error in getting account');
+			}
+			return;
 			navigate('LocationScreen', undefined);
 		} catch (error) {
 			Alert.alert('Invalid otp.');
-			console.log('Invalid code.');
+			console.log('Invalid otp');
 		}
 	};
 

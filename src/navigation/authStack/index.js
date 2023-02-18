@@ -17,9 +17,9 @@ export const AuthStack = () => {
 			}}
 		>
 			<AuthStackNav.Screen component={Screens.LoginScreen} name='LoginScreen' />
+			<AuthStackNav.Screen component={Screens.Splash} name='Splash' />
 			<AuthStackNav.Screen component={Screens.LocationScreen} name='LocationScreen' />
 			<AuthStackNav.Screen component={Screens.OtpScreen} name='OtpScreen' />
-			<AuthStackNav.Screen component={Screens.Splash} name='Splash' />
 		</AuthStackNav.Navigator>
 	);
 };
