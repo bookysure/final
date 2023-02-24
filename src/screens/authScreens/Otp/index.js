@@ -4,7 +4,7 @@ import { navigate } from '../../../navigation';
 import { OtpView } from './OtpView';
 import firestore from '@react-native-firebase/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { STORAGE_KEYS } from '../../../helpers/constants/storageKeys';
+import { STORAGE_KEYS } from '../../../constants/storageKeys';
 
 const OtpScreen = (props) => {
 	const [otp, setOtp] = useState('');

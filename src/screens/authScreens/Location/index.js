@@ -5,7 +5,7 @@ import Geolocation from 'react-native-geolocation-service';
 import firestore from '@react-native-firebase/firestore';
 import { LocationView } from './LocationView';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { STORAGE_KEYS } from '../../../helpers/constants/storageKeys';
+import { STORAGE_KEYS } from '../../../constants/storageKeys';
 
 const Location = () => {
 	const askForPermission = async () => {

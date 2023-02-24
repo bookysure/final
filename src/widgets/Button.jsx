@@ -1,7 +1,8 @@
-import { colors, fonts } from '../helpers/styles';
-import { StyleSheet, View } from 'react-native';
+import { fonts } from '../helpers/styles';
+import { StyleSheet, View, TouchableOpacity, useColorScheme } from 'react-native';
 import { Touchable, Text } from '../components';
-import FastImage, { Source } from 'react-native-fast-image';
+import { colors } from '../constants/colors';
+import { WIDTH } from '../constants/dimensions';
 
 /**
  *
@@ -15,52 +16,50 @@ import FastImage, { Source } from 'react-native-fast-image';
  */
 
 
-const Button = ({ onPress, value = '', disabled = false, customStyle = {}, leftIcon }) => {
-    const buttonStyle = disabled ? styles.disabled : styles.default;
-    const textColor = disabled ? colors.bg : buttonStyle.color;
+const Button = ({ disabled = false, customStyle = {}, leftIcon, title = '', onPress, loading, type, style }) => {
 
     return (
-        <Touchable disabled={disabled} style={[styles.container, buttonStyle, customStyle]} onPress={onPress}>
-            {leftIcon ? (
-                <View style={styles.imageWrapper}>
-                    <FastImage source={leftIcon} style={styles.imageStyle} />
-                </View>
-            ) : null}
-            <Text children={value} color={textColor} />
-        </Touchable>
+        <TouchableOpacity
+            onPress={
+                () => {
+                    onPress ?
+                        onPress()
+                        :
+                        console.log('Asign function for button ' + title)
+                }
+            }
+            style={[{
+                backgroundColor: colors[useColorScheme()][type ? 'secondary' : 'primary'],
+                width: WIDTH * 3 / 4,
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderRadius: 5,
+                paddingVertical: 3
+            }, style]}
+            disabled={
+                loading ?
+                    true
+                    :
+                    false
+            }
+        >
+            {
+                loading ?
+                    <ActivityIndicator color={colors[useColorScheme()]['white']} />
+                    :
+                    <Text
+                        style={{
+                            fontSize: 18,
+                            fontWeight: 'bold',
+                            color: colors[useColorScheme()]['white'],
+                            textTransform: 'uppercase'
+                        }}>
+                        {title}
+                    </Text>
+            }
+
+        </TouchableOpacity>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        padding: 16,
-        borderRadius: 15,
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'row'
-    },
-    default: {
-        backgroundColor: colors.purple,
-        color: colors.white
-    },
-    bordered: {
-        backgroundColor: 'transparent',
-        color: colors.purple,
-        borderWidth: 2,
-        borderColor: colors.purple
-    },
-    disabled: {
-        backgroundColor: colors.lightPurpule,
-        color: colors.white
-    },
-    imageStyle: {
-        width: 22,
-        height: 22
-    },
-    imageWrapper: {
-        marginRight: 5
-    }
-});
 
 export default Button;

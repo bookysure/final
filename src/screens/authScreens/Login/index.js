@@ -7,7 +7,7 @@ import firestore from '@react-native-firebase/firestore';
 import { navigate } from '../../../navigation';
 import { Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { STORAGE_KEYS } from '../../../helpers/constants/storageKeys';
+import { STORAGE_KEYS } from '../../../constants/storageKeys';
 
 const LoginScreen = () => {
 	const [phoneNumber, setPhoneNumber] = useState('');
