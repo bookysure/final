@@ -5,13 +5,8 @@ import { useEffect } from 'react';
 
 const Splash = () => {
 	const getUsers = async () => {
-		firestore()
-			?.collection('ToDos')
-			?.onSnapshot((result) => {
-				result.forEach((doc) => {
-					console.log(doc.data());
-				});
-			});
+		const version = await firestore().collection('App').doc('Version').get();
+		console.log(version.data())
 	};
 
 	useEffect(() => {

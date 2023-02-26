@@ -1,8 +1,9 @@
 import React from 'react'
-import { View, Image, useColorScheme, Text as NormalText } from 'react-native'
+import { View, Image, useColorScheme,  } from 'react-native'
 // import { NormalText } from '../texts/NormalText'
 import { WIDTH } from '../constants/dimensions'
 import { colors } from '../constants/colors'
+import { Text } from '../widgets'
 
 
 const GetStarted = ({ image, text }) => {
@@ -22,8 +23,8 @@ const GetStarted = ({ image, text }) => {
                 }}
                 resizeMode={'center'}
             />
-            <NormalText
-                style={{
+            <Text
+                customStyle={{
                     justifyContent: 'center',
                     alignItems: 'center',
                     backgroundColor: colors[useColorScheme()]['secondary'],

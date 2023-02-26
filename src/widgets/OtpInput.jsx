@@ -1,6 +1,7 @@
 import OTPInputView from '@twotalltotems/react-native-otp-input';
-import { StyleSheet, View } from 'react-native';
-import { colors, screenWidth } from '../helpers/styles';
+import { StyleSheet, useColorScheme, View } from 'react-native';
+import { colors } from "../constants/colors";
+import { WIDTH } from "../constants/dimensions";
 
 
 const OtpInput = ({ pin, setPin }) => {
@@ -23,14 +24,14 @@ const OtpInput = ({ pin, setPin }) => {
 
 const styles = StyleSheet.create({
     underlineStyleBase: {
-        width: screenWidth / 9,
+        width: WIDTH / 9,
         height: 45,
         borderWidth: 0,
         borderBottomWidth: 1,
         fontSize: 24
     },
     underlineStyleHighLighted: {
-        borderColor: colors.purple
+        borderColor: colors[useColorScheme()]['secondary']
     }
 });
 

@@ -1,22 +1,21 @@
 import { fonts } from '../helpers/styles';
-import { StyleSheet, View, TouchableOpacity, useColorScheme } from 'react-native';
-import { Touchable, Text } from '../components';
+import { StyleSheet, View, TouchableOpacity, useColorScheme, Text, ActivityIndicator } from 'react-native';
 import { colors } from '../constants/colors';
 import { WIDTH } from '../constants/dimensions';
 
-/**
- *
- * @param onPress
- * @param value
- * @param type
- * @param disabled
- * @param customStyle
- * @returns {JSX.Element}
- * @constructor
- */
+    /**
+     *
+     * @param onPress
+     * @param value
+     * @param type
+     * @param disabled
+     * @param customStyle
+     * @returns {JSX.Element}
+     * @constructor
+     */
 
 
-const Button = ({ disabled = false, customStyle = {}, leftIcon, title = '', onPress, loading, type, style }) => {
+const Button = ({ disabled = false, leftIcon, title = '', onPress, loading, type, style }) => {
 
     return (
         <TouchableOpacity

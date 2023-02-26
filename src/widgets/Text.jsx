@@ -1,6 +1,7 @@
-import { StyleSheet, Text as _Text } from 'react-native';
+import { StyleSheet, Text as _Text, useColorScheme } from 'react-native';
+import { colors } from '../constants/colors';
 
-import { colors } from '../helpers/styles';
+
 
 /**
  *
@@ -17,14 +18,15 @@ import { colors } from '../helpers/styles';
  * @private
  */
 const Text = ({
-    fontSize = 16,
+    fontSize = 14,
     fontFamily = '',
-    color = colors.white,
+    color = colors[useColorScheme()]['opposite'],
     children = '',
     opacity = 1,
     customStyle = {},
     isAnimated = false,
     fontWeight = '500',
+    text,
     ...props
 }) => {
     const style = styles(fontSize, fontFamily, color, opacity, fontWeight);
@@ -35,7 +37,7 @@ const Text = ({
         ...props
     };
 
-    return <_Text {...resultProps} />;
+    return <_Text {...resultProps} >{text}</_Text>;
 };
 
 const styles = (fontSize, fontFamily, color, opacity, fontWeight) =>

@@ -3,7 +3,7 @@ import { PermissionsAndroid } from 'react-native';
 import { requestLocationPermission } from '../../../helpers/Locations';
 import Geolocation from 'react-native-geolocation-service';
 import firestore from '@react-native-firebase/firestore';
-import { LocationView } from './LocationView';
+import LocationView  from './LocationView';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { STORAGE_KEYS } from '../../../constants/storageKeys';
 
@@ -39,11 +39,7 @@ const Location = () => {
 		}
 	};
 
-	useEffect(() => {
-		askForPermission();
-	}, []);
-
-	return <LocationView getLocation={getLocation} />;
+	return <LocationView askForPermission={askForPermission} />;
 };
 
 export default Location;

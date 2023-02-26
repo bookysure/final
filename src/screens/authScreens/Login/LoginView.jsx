@@ -1,57 +1,77 @@
-import { StyleSheet, View } from "react-native";
-import { Text, Touchable } from "../../../components";
-import { colors, screenHeight } from "../../../helpers/styles";
-import { Button, Input } from "../../../widgets";
+import { StyleSheet, TouchableOpacity, Text, useColorScheme, View } from "react-native";
+import { colors } from "../../../constants/colors";
+import { HEIGHT } from "../../../constants/dimensions";
+import { Button, H1Text, H3Text, H6Text, Input, NormalText } from "../../../widgets";
 
-export const LoginView = ({ phoneNumber, setPhoneNumber, googleSignIn, sendOtpTophone }) => {
+export const LoginView = ({ phoneNumber, setPhoneNumber, googleSignIn, sendOtpTophone, loading }) => {
     return (
-        <View style={styles.container}>
-            <View style={{
-                paddingTop: screenHeight / 8
-            }}>
-                <Text fontSize={32} fontWeight='800'>Welcome</Text>
-                <Text color={colors.grey}>Please enter your phone number to continue.</Text>
-                <View
-                    style={{
-                        paddingVertical: 50
-                    }}
-                >
-                    <Input value={phoneNumber} onChange={val => setPhoneNumber(val)} keyboardType={'numeric'} />
-                </View>
-                <Button onPress={sendOtpTophone} disabled={phoneNumber.length < 10} value={'Continue'} />
-                <View style={{
-                    paddingVertical: 20
-                }}>
-                    <Text customStyle={{ textAlign: 'center' }}>
-                        or
-                    </Text>
+
+        <View
+            style={{
+                backgroundColor: colors[useColorScheme()]['background'],
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+                maringTop: -200
+            }}
+        >
+
+            <View>
+                <View style={{ marginBottom: 20 }}>
+                    <H3Text text={"Welcome to"} style={{ color: colors[useColorScheme()]['opposite'] }} />
+                    <H1Text text={"BookySure!"} />
                 </View>
                 <View>
-                    <Touchable style={styles.googleButton} onPress={googleSignIn}>
-                        <Text color={colors.black}>
-                            Sign in with google
-                        </Text>
-                    </Touchable>
+                    <NormalText text={"To continue please enter your phone number"} />
+                </View>
+
+                <View>
+                    <Input
+                        placeholder="99999XXXXX"
+                        keyboardType={"numeric"}
+                        value={phoneNumber}
+                        onChangeText={(value) => {
+                            setPhoneNumber(value)
+                        }}
+                        autoFocus={true}
+                        maxLength={10}
+                        phone={true}
+                    />
                 </View>
             </View>
-        </View>
+            <View style={{ padding: 20, paddingVertical: 10 }}>
+                <Button
+                    title={'get otp'}
+                    onPress={() => {
+                        sendOtpTophone()
+                    }}
+                    loading={loading}
+                />
+            </View>
+            <NormalText text={"or"} />
+            <View style={{ padding: 20, paddingVertical: 10 }}>
+                <Button
+                    title={'Login With Google'}
+                    onPress={() => {
+                        sendOtpTophone()
+                    }}
+                    loading={loading}
+                />
+            </View>
+
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <NormalText text={"By clicking you will accept all the "} />
+                <View style={{ flexDirection: 'row', alignItems: 'baseline' }}>
+                    <TouchableOpacity onPress={() => { that.navigation.navigate('PrivacyScreen') }}>
+                        <H6Text text={"terms of use"} />
+                    </TouchableOpacity>
+                    <NormalText text={" and "} />
+                    <TouchableOpacity onPress={() => { that.navigation.navigate('TermsScreen') }}>
+                        <H6Text text={"privacy policy."} />
+                    </TouchableOpacity>
+                </View>
+            </View>
+
+        </View >
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        padding: 20,
-
-    },
-    googleButton: {
-        width: '100%',
-        padding: 16,
-        borderRadius: 15,
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'row',
-        backgroundColor: colors.white,
-
-    },
-})

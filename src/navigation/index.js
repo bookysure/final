@@ -3,8 +3,9 @@ import {
     createNavigationContainerRef,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useColorScheme } from 'react-native';
+import { colors } from '../constants/colors';
 
-import { colors } from '../helpers/styles';
 import { AuthStack } from './authStack';
 
 export const navigationRef = createNavigationContainerRef();
@@ -34,7 +35,7 @@ export const AppNavigation = () => {
                 screenOptions={{
                     headerShown: false,
                     animation: 'slide_from_right',
-                    contentStyle: { backgroundColor: colors.bg },
+                    contentStyle: { backgroundColor: colors[useColorScheme()]['background'] },
                 }}>
                 <RootStackNav.Screen component={AuthStack} name={'AuthFlow'} />
             </RootStackNav.Navigator>

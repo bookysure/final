@@ -1,14 +1,14 @@
 
-import { StyleSheet, View, Animated, useColorScheme } from "react-native";
+import { StyleSheet, View, Animated, useColorScheme, TouchableOpacity, Text as Text1 } from "react-native";
 import { Text } from "../../../components";
-import { Button, GetStarted } from "../../../widgets";
+import { Button } from "../../../widgets";
 import { colors } from "../../../constants/colors";
+import { GetStarted } from "../../../components";
 import { HEIGHT, WIDTH } from "../../../constants/dimensions";
-
-export const GetStartedView = ({ value, slides, get, setGet }) => {
-
+import { navigate } from "../../../navigation";
 
 
+const GetStartedView = ({ value, slides, get, setGet, moveLeft }) => {
 
     return (
         <View
@@ -17,10 +17,9 @@ export const GetStartedView = ({ value, slides, get, setGet }) => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 flexGrow: 1,
-                flex:1
+                flex: 1
             }}
         >
-
             <Animated.View
                 style={{
                     height: HEIGHT / 2,
@@ -55,7 +54,8 @@ export const GetStartedView = ({ value, slides, get, setGet }) => {
                     <Button
                         title={'get started'}
                         onPress={() => {
-                            navigation.replace('PhoneNumberScreen')
+                            navigate('LoginScreen')
+                            // navigation.replace('PhoneNumberScreen')
                         }}
                     />
                 }
@@ -63,3 +63,5 @@ export const GetStartedView = ({ value, slides, get, setGet }) => {
         </View>
     )
 }
+
+export default GetStartedView

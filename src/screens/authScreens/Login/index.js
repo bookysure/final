@@ -11,6 +11,7 @@ import { STORAGE_KEYS } from '../../../constants/storageKeys';
 
 const LoginScreen = () => {
 	const [phoneNumber, setPhoneNumber] = useState('');
+	const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
 		GoogleSignin.signOut();
@@ -65,8 +66,8 @@ const LoginScreen = () => {
 	const findUserByPhoneNumber = async () => {
 		const foundUser = await firestore().collection('Users').where('phoneNumber', '==', phoneNumber).get();
 
-		if (foundUser.empty) {
-			alert('No account associated with this phone number was found!');
+		if (!foundUser.empty) {
+			alert('Another account is already associated with this phone number!');
 		}
 		return foundUser.empty;
 	};
@@ -94,16 +95,19 @@ const LoginScreen = () => {
 	};
 
 	const sendOtpTophone = async () => {
-		if (findUserByPhoneNumber()) {
+		setLoading(true)
+		// if (findUserByPhoneNumber()) {
 			if (phoneNumber.length == 10) {
 				try {
 					const confirmation = await auth().signInWithPhoneNumber(`+91 ${phoneNumber}`);
 					navigate('OtpScreen', { phoneNumber, confirmation });
+					setLoading(false)
 					console.log(confirmation);
 				} catch (error) {
+					setLoading(false)
 					console.log(error, 'in sending otp');
 				}
-			}
+			// }
 		}
 	};
 
@@ -113,6 +117,7 @@ const LoginScreen = () => {
 			setPhoneNumber={setPhoneNumber}
 			googleSignIn={googleSignIn}
 			sendOtpTophone={sendOtpTophone}
+			loading={loading}
 		/>
 	);
 };

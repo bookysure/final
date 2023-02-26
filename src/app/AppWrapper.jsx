@@ -1,7 +1,8 @@
-import { StatusBar, TextInput, Text, StyleSheet } from 'react-native';
+import { StatusBar, TextInput, Text, StyleSheet, useColorScheme } from 'react-native';
 
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { colors } from '../helpers/styles';
+import { colors } from '../constants/colors';
+
 import { AppNavigation } from '../navigation';
 
 
@@ -10,7 +11,7 @@ const AppWrapper = () => {
 
     return (
         <SafeAreaView edges={['top']} style={styles(insets).appWrapper}>
-            <StatusBar backgroundColor={colors.bg} barStyle={'light-content'} />
+            <StatusBar backgroundColor={colors[useColorScheme()]['primary']} barStyle={'light-content'} />
             <AppNavigation />
         </SafeAreaView>
     );
