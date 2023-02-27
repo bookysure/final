@@ -1,3 +1,4 @@
 import AuthScreens from './authScreens';
+import { HomeScreen, SettingsScreen } from './mainFlow';
 
-export default { ...AuthScreens };
+export default { ...AuthScreens, HomeScreen, SettingsScreen };

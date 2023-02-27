@@ -1,4 +1,4 @@
-import GetStarted from "./GetStarted";
+import GetStarted from './GetStarted';
+import BottomBar from './BottomBar';
 
-
-export { GetStarted }
+export { GetStarted, BottomBar };
