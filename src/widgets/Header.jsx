@@ -1,8 +1,8 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import { Text, Touchable } from '../components';
 import { colors } from '../helpers/styles';
 import BackButton from './BackButton';
+import Touchable from './Touchable';
 
 const Header = ({
     leftIcon,
@@ -15,29 +15,32 @@ const Header = ({
 }) => {
     return (
         <View style={[styles.headerContainer, customContainerStyle]}>
-            <View style={styles.leftContent}>
-                {!hideLeftIcon ? (
-                    leftIcon ? (
-                        <Touchable onPress={onLeftIconPress}>
-                            <FastImage source={leftIcon} style={styles.buttonStyle} />
-                        </Touchable>
-                    ) : (
-                        <View>
-                            <BackButton />
-                        </View>
-                    )
-                ) : null}
-                <View style={styles.titleWrapper}>
-                    <Text fontSize={20} fontWeight={'900'}>
-                        {title}
-                    </Text>
-                </View>
+
+            {!hideLeftIcon ? (
+                leftIcon ? (
+                    <Touchable onPress={onLeftIconPress}>
+                        <FastImage source={leftIcon} style={styles.buttonStyle} />
+                    </Touchable>
+                ) : (
+                    <View>
+                        <BackButton />
+                    </View>
+                )
+            ) : <View />}
+            <View style={styles.titleWrapper}>
+                <Text style={{
+                    color: '#000',
+                    fontSize: 20,
+                    fontWeight: '700',
+                }}>
+                    {title}
+                </Text>
             </View>
             {rightIcon ? (
                 <Touchable onPress={onRightIconPress}>
                     <FastImage source={rightIcon} style={styles.buttonStyle} />
                 </Touchable>
-            ) : null}
+            ) : <View />}
         </View>
     );
 };
@@ -46,11 +49,9 @@ const styles = StyleSheet.create({
     headerContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 10
+        padding: 10,
     },
-    leftContent: {
-        flexDirection: 'row'
-    },
+
     titleWrapper: {
         paddingHorizontal: 10,
         justifyContent: 'center'

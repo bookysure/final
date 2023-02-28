@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text, useColorScheme } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { colors } from '../constants/colors';
+import { WIDTH } from '../constants/dimensions';
 import { ICON_NAMES } from '../helpers/constants';
 import { navigate, navigationRef } from '../navigation';
-import { Text, Touchable } from '../widgets';
+import { Touchable } from '../widgets';
 
 const BottomBar = () => {
 	const [activeTab, setActiveTab] = useState(0);
@@ -16,9 +17,9 @@ const BottomBar = () => {
 	}, [navigationRef?.current?.getCurrentRoute()]);
 
 	useEffect(() => {
-		if (currentRoute === 'HomeView' && activeTab !== 0) {
+		if (currentRoute === 'HomeScreen' && activeTab !== 0) {
 			setActiveTab(0);
-		} else (currentRoute === 'SettingsScreen' && activeTab !== 1) {
+		} else if (currentRoute === 'SettingsScreen' && activeTab !== 1) {
 			setActiveTab(1);
 		}
 	}, [currentRoute]);
@@ -26,7 +27,7 @@ const BottomBar = () => {
 	const onTabChange = (key) => {
 		switch (key) {
 			case 0:
-				navigate('HomeView', undefined);
+				navigate('HomeScreen', undefined);
 				break;
 			case 1:
 				navigate('SettingsStack', undefined);
@@ -47,9 +48,9 @@ const BottomBar = () => {
 		}
 	];
 
-	if (currentRoute === 'HomeView' || currentRoute === 'SettingsScreen') {
+	if (currentRoute === 'HomeScreen' || currentRoute === 'SettingsScreen') {
 		return (
-			<View style={styles.bottomTabWrapper}>
+			<View style={[styles.bottomTabWrapper, { backgroundColor: 'red' }]}>
 				{tabDetails.map((tab, index) => (
 					<Touchable
 						style={styles.tabsContainer}
@@ -67,11 +68,11 @@ const BottomBar = () => {
 								style={styles.copyIcon}
 							/> */}
 						</View>
-						{activeTab === index ? (
-							<Text customStyle={styles.barText} fontSize={12}>
-								{tab.screenName}
-							</Text>
-						) : null}
+						{/* {activeTab === index ? ( */}
+						<Text style={{ color: '#fff' }}>
+							{tab.screenName}
+						</Text>
+						{/* // ) : null} */}
 					</Touchable>
 				))}
 			</View>
@@ -87,25 +88,20 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		position: 'absolute',
 		justifyContent: 'space-around',
-		width: screenWidth,
+		width: WIDTH,
 		bottom: 0,
 		paddingVertical: 10,
-		backgroundColor: colors.lightBlack,
 		borderTopRightRadius: 20,
 		borderTopLeftRadius: 20,
-		paddingHorizontal: 15
+		paddingHorizontal: 15,
 	},
 	tabsContainer: {
 		alignItems: 'center'
 	},
 	copyIcon: { height: 30, width: 30, margin: 10 },
 	highlightedTab: {
-		backgroundColor: colors.purple,
+		// backgroundColor: colors.purple,
 		bottom: 30,
 		borderRadius: 100
 	},
-	barText: {
-		bottom: 5,
-		position: 'absolute'
-	}
 });

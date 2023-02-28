@@ -1,6 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { colors } from '../../helpers/styles';
 import { StyleSheet } from 'react-native';
 import { BottomBar } from '../../components';
 import { HomeStack } from './homeStack';
@@ -28,6 +27,6 @@ export const MainStack = () => {
 
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: colors.bg
+		// backgroundColor: colors.bg
 	}
 });

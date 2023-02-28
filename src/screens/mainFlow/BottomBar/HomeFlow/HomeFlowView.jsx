@@ -1,10 +1,14 @@
 import { View } from "react-native"
-import Header from "../../../../widgets/Header"
+import { Header } from "../../../../widgets"
 
 export const HomeFlowView = () => {
     return (
-        <View>
-            <Header title="Home" />
+        <View
+            style={{
+                flex: 1
+            }}
+        >
+            <Header hideLeftIcon title="Home" />
         </View>
     )
 }

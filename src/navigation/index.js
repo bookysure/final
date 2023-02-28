@@ -36,8 +36,8 @@ export const AppNavigation = () => {
 					contentStyle: { backgroundColor: colors[useColorScheme()]['background'] }
 				}}
 			>
-				<RootStackNav.Screen component={AuthStack} name={'AuthFlow'} />
 				<RootStackNav.Screen component={MainStack} name={'MainFlow'} />
+				<RootStackNav.Screen component={AuthStack} name={'AuthFlow'} />
 			</RootStackNav.Navigator>
 		</NavigationContainer>
 	);
