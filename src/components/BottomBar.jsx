@@ -1,11 +1,52 @@
 import { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, useColorScheme } from 'react-native';
+import { StyleSheet, View, Text, useColorScheme, TouchableWithoutFeedback, Animated, Easing } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { colors } from '../constants/colors';
 import { WIDTH } from '../constants/dimensions';
+import { icons } from '../constants/icons';
 import { ICON_NAMES } from '../helpers/constants';
 import { navigate, navigationRef } from '../navigation';
 import { Touchable } from '../widgets';
+import { BottomTabIcons } from './BottomTabIcons';
+
+const tabs = [
+	{
+		name: 'HomeStack',
+		screen: 'HomeScreen',
+		icon: 'h-white',
+		label: 'Home',
+		index: 2
+	},
+	{
+		name: 'ChatStack',
+		screen: 'ChatScreen',
+		icon: 'chat-white',
+		label: 'Chat',
+		index: 1
+	},
+	{
+		name: 'WalletStack',
+		screen: 'WalletScreen',
+		icon: 'wallet-white',
+		label: 'Wallet',
+		index: 0
+	},
+	{
+		name: 'SettingsStack',
+		screen: 'SettingsScreen',
+		icon: 'gear-white',
+		label: 'Settings',
+		index: 4
+	},
+	{
+		name: 'DiscoverStack',
+		screen: 'DiscoverScreen',
+		icon: 'intrest-white',
+		label: 'Discover',
+		index: 3
+	},
+]
+
 
 const BottomBar = () => {
 	const [activeTab, setActiveTab] = useState(0);
@@ -13,69 +54,31 @@ const BottomBar = () => {
 
 	useEffect(() => {
 		const result = navigationRef?.current?.getCurrentRoute();
-		setCurrentRoute(result?.name || '');
+		setCurrentRoute(result?.name || 'HomeScreen');
 	}, [navigationRef?.current?.getCurrentRoute()]);
 
-	useEffect(() => {
-		if (currentRoute === 'HomeScreen' && activeTab !== 0) {
-			setActiveTab(0);
-		} else if (currentRoute === 'SettingsScreen' && activeTab !== 1) {
-			setActiveTab(1);
-		}
-	}, [currentRoute]);
 
-	const onTabChange = (key) => {
-		switch (key) {
-			case 0:
-				navigate('HomeScreen', undefined);
-				break;
-			case 1:
-				navigate('SettingsStack', undefined);
-				break;
-			default:
-				break;
-		}
-	};
-
-	const tabDetails = [
-		{
-			screenName: 'Home',
-			// icon: ICON_NAMES.home
-		},
-		{
-			screenName: 'Settings',
-			// icon: ICON_NAMES.settings
-		}
-	];
-
-	if (currentRoute === 'HomeScreen' || currentRoute === 'SettingsScreen') {
+	if (tabs.findIndex(o => o.name === currentRoute)) {
 		return (
-			<View style={[styles.bottomTabWrapper, { backgroundColor: 'red' }]}>
-				{tabDetails.map((tab, index) => (
-					<Touchable
-						style={styles.tabsContainer}
-						activeOpacity={activeTab === index ? 1 : 0.6}
-						onPress={() => {
-							setActiveTab(index);
-							onTabChange(index);
-						}}
-						key={index}
-					>
-						<View style={activeTab === index ? styles.highlightedTab : undefined}>
-							{/* <FastImage
-								tintColor={activeTab === index ? colors.white : colors.grey}
-								source={tab.icon}
-								style={styles.copyIcon}
-							/> */}
-						</View>
-						{/* {activeTab === index ? ( */}
-						<Text style={{ color: '#fff' }}>
-							{tab.screenName}
-						</Text>
-						{/* // ) : null} */}
-					</Touchable>
-				))}
-			</View>
+			<View style={{
+				position: 'absolute',
+				backgroundColor: colors[useColorScheme()]['primary'],
+				bottom: 15,
+				borderRadius: 50,
+				marginHorizontal: 10,
+				justifyContent: 'space-evenly',
+				alignItems: 'center',
+				flexDirection: 'row',
+				width: WIDTH - 20
+			}}>
+				{
+					tabs.sort((a, b) => { a.index - b.index }).map((item, index) => {
+						return (
+							<BottomTabIcons key={index} title={item.label} icon={item.icon} name={item.name} focused={currentRoute == item.screen} currentRoute={navigationRef?.current?.getCurrentRoute()} />
+						)
+					})
+				}
+			</View >
 		);
 	}
 	return null;
@@ -84,17 +87,6 @@ const BottomBar = () => {
 export default BottomBar;
 
 const styles = StyleSheet.create({
-	bottomTabWrapper: {
-		flexDirection: 'row',
-		position: 'absolute',
-		justifyContent: 'space-around',
-		width: WIDTH,
-		bottom: 0,
-		paddingVertical: 10,
-		borderTopRightRadius: 20,
-		borderTopLeftRadius: 20,
-		paddingHorizontal: 15,
-	},
 	tabsContainer: {
 		alignItems: 'center'
 	},
@@ -104,4 +96,5 @@ const styles = StyleSheet.create({
 		bottom: 30,
 		borderRadius: 100
 	},
+
 });
