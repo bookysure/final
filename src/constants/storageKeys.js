@@ -1,4 +1,5 @@
 export const STORAGE_KEYS = {
-	FCM: 'fcn_token',
-	UID: 'uid'
+	FCM: 'fcm_token',
+	UID: 'uid',
+	TOKEN: 'token'
 };

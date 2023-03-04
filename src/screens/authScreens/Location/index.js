@@ -3,15 +3,12 @@ import { PermissionsAndroid } from 'react-native';
 import { requestLocationPermission } from '../../../helpers/Locations';
 import Geolocation from 'react-native-geolocation-service';
 import firestore from '@react-native-firebase/firestore';
-import LocationView  from './LocationView';
+import LocationView from './LocationView';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { STORAGE_KEYS } from '../../../constants/storageKeys';
+import { navigate } from '../../../navigation';
 
 const Location = () => {
-	const askForPermission = async () => {
-		await requestLocationPermission();
-	};
-
 	const getLocation = async () => {
 		const uid = await AsyncStorage.getItem(STORAGE_KEYS.UID);
 		if (PermissionsAndroid.RESULTS.GRANTED) {
@@ -25,7 +22,8 @@ const Location = () => {
 					try {
 						console.log(uid);
 						const feild = await firestore().collection('Users').doc(uid);
-						feild.update({ location: data });
+						await feild.update({ location: data });
+						navigate('MainFlow', undefined);
 					} catch (error) {
 						console.log(error);
 					}
@@ -36,6 +34,13 @@ const Location = () => {
 				},
 				{ enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
 			);
+		}
+	};
+
+	const askForPermission = async () => {
+		const granted = await requestLocationPermission();
+		if (granted) {
+			getLocation();
 		}
 	};
 

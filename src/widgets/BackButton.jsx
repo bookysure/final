@@ -25,7 +25,8 @@ const BackButton = ({ customStyle = {} }) => {
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        paddingRight: 30
     },
     buttonStyle: {
         height: 30,

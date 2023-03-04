@@ -1,2 +1,2 @@
-import NotificationsScreen from "./NotificationsScreen"
-export { NotificationsScreen }
+import NotificationsScreen from './NotificationsScreen';
+export default { NotificationsScreen };

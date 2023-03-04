@@ -58,7 +58,7 @@ const BottomBar = () => {
 	}, [navigationRef?.current?.getCurrentRoute()]);
 
 
-	if (tabs.findIndex(o => o.name === currentRoute)) {
+	if (tabs.findIndex(o => o.screen === currentRoute > -1)) {
 		return (
 			<View style={{
 				position: 'absolute',

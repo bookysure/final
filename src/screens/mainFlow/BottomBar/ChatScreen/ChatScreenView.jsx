@@ -1,10 +1,10 @@
 import { View } from "react-native"
 import { Header } from "../../../../widgets"
 
-export const SettingsFlowView = () => {
+export const ChatScreenView = () => {
     return (
         <View>
-            <Header title="Settings" />
+            <Header title="Chat" />
         </View>
     )
 }

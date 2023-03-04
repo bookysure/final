@@ -11,15 +11,16 @@ import { STORAGE_KEYS } from '../../../constants/storageKeys';
 
 const LoginScreen = () => {
 	const [phoneNumber, setPhoneNumber] = useState('');
-	const [loading, setLoading] = useState(false)
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		GoogleSignin.signOut();
 	}, []);
 
-	const saveUserData = (uid) => {
-		if (uid) {
+	const saveUserData = (uid, token) => {
+		if (uid && token) {
 			AsyncStorage.setItem(STORAGE_KEYS.UID, uid);
+			AsyncStorage.setItem(STORAGE_KEYS.TOKEN, token);
 		}
 	};
 
@@ -42,7 +43,7 @@ const LoginScreen = () => {
 			lastSignIn: new Date()
 		};
 		console.log(data);
-		saveUserData(profile?.uid);
+		saveUserData(profile?.uid, idToken);
 		try {
 			await firestore().collection('Users').doc(profile?.uid).set(data);
 		} catch (error) {
@@ -57,7 +58,7 @@ const LoginScreen = () => {
 			if (foundUser) {
 				foundUser.update({ token, lastSignIn: new Date() });
 			}
-			saveUserData(profile?.uid);
+			saveUserData(profile?.uid, token);
 		} catch (error) {
 			console.log(error);
 		}
@@ -95,18 +96,18 @@ const LoginScreen = () => {
 	};
 
 	const sendOtpTophone = async () => {
-		setLoading(true)
+		setLoading(true);
 		// if (findUserByPhoneNumber()) {
-			if (phoneNumber.length == 10) {
-				try {
-					const confirmation = await auth().signInWithPhoneNumber(`+91 ${phoneNumber}`);
-					navigate('OtpScreen', { phoneNumber, confirmation });
-					setLoading(false)
-					console.log(confirmation);
-				} catch (error) {
-					setLoading(false)
-					console.log(error, 'in sending otp');
-				}
+		if (phoneNumber.length == 10) {
+			try {
+				const confirmation = await auth().signInWithPhoneNumber(`+91 ${phoneNumber}`);
+				navigate('OtpScreen', { phoneNumber, confirmation });
+				setLoading(false);
+				console.log(confirmation);
+			} catch (error) {
+				setLoading(false);
+				console.log(error, 'in sending otp');
+			}
 			// }
 		}
 	};

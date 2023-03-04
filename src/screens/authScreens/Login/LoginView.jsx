@@ -42,9 +42,7 @@ export const LoginView = ({ phoneNumber, setPhoneNumber, googleSignIn, sendOtpTo
             <View style={{ padding: 20, paddingVertical: 10 }}>
                 <Button
                     title={'get otp'}
-                    onPress={() => {
-                        sendOtpTophone()
-                    }}
+                    onPress={sendOtpTophone}
                     loading={loading}
                 />
             </View>
@@ -52,9 +50,7 @@ export const LoginView = ({ phoneNumber, setPhoneNumber, googleSignIn, sendOtpTo
             <View style={{ padding: 20, paddingVertical: 10 }}>
                 <Button
                     title={'Login With Google'}
-                    onPress={() => {
-                        sendOtpTophone()
-                    }}
+                    onPress={googleSignIn}
                     loading={loading}
                 />
             </View>

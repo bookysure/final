@@ -7,7 +7,7 @@ import MarqueeText from "react-native-marquee";
 import { WIDTH } from "../../../../constants/dimensions"
 import { ImageSlider } from "react-native-image-slider-banner";
 
-export const HomeFlowView = ({
+export const HomeScreenView = ({
     marquee = '\ud83d\udc4c Welcome to bookysure, we will help you in booking your slots. \ud83d\udc4c',
     sliders = [
         { img: "https://dummyimage.com/600x400/000/fff" }, { img: "https://source.unsplash.com/1024x768/?water" }, { img: "https://source.unsplash.com/1024x768/?birds" }
@@ -51,7 +51,7 @@ export const HomeFlowView = ({
                             onItemChanged={(item) => console.log("item", item.img)}
                             showIndicator={false}
                             preview={false}
-                            caroselImageStyle={{ resizeMode: "cover", width: WIDTH - 20, height: 200, borderRadius:5}}
+                            caroselImageStyle={{ resizeMode: "cover", width: WIDTH - 20, height: 200, borderRadius: 5 }}
                         />
 
                     </View>

@@ -32,6 +32,8 @@ const Header = ({
                     color: '#000',
                     fontSize: 20,
                     fontWeight: '700',
+                    textAlign: 'center',
+                    paddingLeft: 10
                 }}>
                     {title}
                 </Text>
@@ -41,6 +43,7 @@ const Header = ({
                     <FastImage source={rightIcon} style={styles.buttonStyle} />
                 </Touchable>
             ) : <View />}
+            <View />
         </View>
     );
 };
@@ -49,11 +52,11 @@ const styles = StyleSheet.create({
     headerContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 15
     },
 
     titleWrapper: {
-        paddingHorizontal: 10,
         justifyContent: 'center'
     },
     buttonStyle: {

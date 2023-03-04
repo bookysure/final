@@ -1,5 +1,13 @@
 import AuthScreens from './authScreens';
-import { HomeScreen, SettingsScreen } from './mainFlow';
-import { NotificationsScreen } from './mainFlow/HomeFlow';
+import { HomeScreen, SettingsScreen, ChatScreen, DiscoverScreen, WalletScreen } from './mainFlow';
+import HomeFlow from './mainFlow/HomeFlow';
 
-export default { ...AuthScreens, HomeScreen, SettingsScreen, NotificationsScreen };
+export default {
+	...AuthScreens,
+	HomeScreen,
+	SettingsScreen,
+	ChatScreen,
+	DiscoverScreen,
+	WalletScreen,
+	...HomeFlow
+};

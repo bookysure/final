@@ -8,12 +8,12 @@ import { STORAGE_KEYS } from '../../../constants/storageKeys';
 
 const OtpScreen = (props) => {
 	const [otp, setOtp] = useState('');
-	const [loading, setLoading] = useState(false)
+	const [loading, setLoading] = useState(false);
 
 	const { phoneNumber, confirmation } = props.route.params;
 	// const phoneNumber = '9876543210'
 	const handleSubmitOtp = async (otp) => {
-		setLoading(true)
+		setLoading(true);
 		console.log(otp);
 		try {
 			const result = await confirmation.confirm(otp);
@@ -24,6 +24,7 @@ const OtpScreen = (props) => {
 					console.log(result.data());
 					firestore().collection('Users').doc(result.data().uid).update({ lastSignIn: new Date() });
 					try {
+						AsyncStorage.setItem(STORAGE_KEYS.TOKEN, result.data().token);
 						AsyncStorage.setItem(STORAGE_KEYS.UID, result.data().uid);
 					} catch (error) {
 						console.log('Async Storage, User Id Not updated', error);
@@ -32,11 +33,11 @@ const OtpScreen = (props) => {
 			} catch (error) {
 				console.log('Error in getting account', error);
 			}
-			setLoading(false)
+			setLoading(false);
 			navigate('LocationScreen', undefined);
 			return;
 		} catch (error) {
-			setLoading(false)
+			setLoading(false);
 			Alert.alert('Invalid otp.');
 			console.log('Invalid otp');
 		}
