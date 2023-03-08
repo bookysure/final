@@ -48,7 +48,7 @@ export const HomeScreenView = ({
                             data={sliders}
                             timer={5000}
                             autoPlay={true}
-                            onItemChanged={(item) => console.log("item", item.img)}
+                            // onItemChanged={(item) => console.log("item", item.img)}
                             showIndicator={false}
                             preview={false}
                             caroselImageStyle={{ resizeMode: "cover", width: WIDTH - 20, height: 200, borderRadius: 5 }}

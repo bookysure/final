@@ -1,4 +1,4 @@
-import { WalletScreenView } from './WalletScreenView';
+import WalletScreenView from './WalletScreenView';
 
 const WalletScreen = () => {
 	return <WalletScreenView />;

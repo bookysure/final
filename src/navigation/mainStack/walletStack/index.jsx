@@ -14,7 +14,7 @@ export const WalletStack = () => {
                 screenOptions={{
                     headerShown: false,
                     contentStyle: styles.container,
-                    animation: 'slide_from_right'
+                    animation: 'slide_from_left'
                 }}
             >
                 <WalletStackNav.Screen component={Screens.WalletScreen} name='WalletScreen' />

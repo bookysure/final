@@ -17,7 +17,7 @@ export const MainStack = () => {
 				screenOptions={{
 					headerShown: false,
 					contentStyle: styles.container,
-					animation: 'slide_from_right'
+					// animation: 'slide_from_right'
 				}}
 			>
 				<MainStackNav.Screen component={HomeStack} name='HomeStack' />

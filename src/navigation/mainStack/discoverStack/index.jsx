@@ -14,7 +14,7 @@ export const DiscoverStack = () => {
 				screenOptions={{
 					headerShown: false,
 					contentStyle: styles.container,
-					animation: 'slide_from_right'
+					animation: 'slide_from_left'
 				}}
 			>
 				<DiscoverStackNav.Screen component={Screens.DiscoverScreen} name='DiscoverScreen' />

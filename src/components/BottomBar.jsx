@@ -22,14 +22,14 @@ const tabs = [
 		screen: 'ChatScreen',
 		icon: 'chat-white',
 		label: 'Chat',
-		index: 1
+		index: 3
 	},
 	{
 		name: 'WalletStack',
 		screen: 'WalletScreen',
 		icon: 'wallet-white',
 		label: 'Wallet',
-		index: 0
+		index: 1
 	},
 	{
 		name: 'SettingsStack',
@@ -43,12 +43,16 @@ const tabs = [
 		screen: 'DiscoverScreen',
 		icon: 'intrest-white',
 		label: 'Discover',
-		index: 3
+		index: 0
 	},
 ]
 
 
 const BottomBar = () => {
+
+
+
+
 	const [activeTab, setActiveTab] = useState(0);
 	const [currentRoute, setCurrentRoute] = useState('');
 
@@ -72,7 +76,7 @@ const BottomBar = () => {
 				width: WIDTH - 20
 			}}>
 				{
-					tabs.sort((a, b) => { a.index - b.index }).map((item, index) => {
+					tabs.sort((a, b) => { return a.index - b.index }).map((item, index) => {
 						return (
 							<BottomTabIcons key={index} title={item.label} icon={item.icon} name={item.name} focused={currentRoute == item.screen} currentRoute={navigationRef?.current?.getCurrentRoute()} />
 						)

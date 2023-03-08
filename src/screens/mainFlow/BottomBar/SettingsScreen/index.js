@@ -1,4 +1,4 @@
-import { SettingsScreenView } from './SettingsScreenView';
+import SettingsScreenView from './SettingsScreenView';
 
 const SettingsScreen = () => {
 	return <SettingsScreenView />;
