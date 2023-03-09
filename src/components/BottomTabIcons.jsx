@@ -33,7 +33,6 @@ export function BottomTabIcons({ title, icon, name, focused, currentRoute }) {
     });
     const buttonFocusedView = { backgroundColor: colors[useColorScheme()]['secondary'], padding: 0, borderRadius: 40, bottom: 0, alignItems: 'center', justifyContent: 'center', borderWidth: 3, borderColor: colors[useColorScheme()]['background'], width: 50, height: 50 }
     const txt = { fontSize: 10, color: colors[useColorScheme()]['white'], fontWeight: '200', textTransform: 'uppercase' };
-    console.log(currentRoute)
     return (
         <View style={{}}>
             <TouchableWithoutFeedback onPress={() => { navigate(name) }} >

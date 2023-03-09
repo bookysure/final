@@ -3,11 +3,14 @@ import { Image, View, useColorScheme, TouchableOpacity, Modal } from 'react-nati
 import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
 import MapView, { Circle } from 'react-native-maps';
 import { Slider } from '@miblanchard/react-native-slider';
+import firestore from '@react-native-firebase/firestore';
 import { navigate } from '../navigation';
 import { icons } from '../constants/icons';
 import { colors } from '../constants/colors';
 import { HEIGHT, WIDTH } from '../constants/dimensions';
 import { H3Text, Button, NormalText, Input } from '../widgets';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { STORAGE_KEYS } from '../constants/storageKeys';
 
 const HomeHeader = () => {
     const [locationModal, setLocationModal] = useState(false)
@@ -19,9 +22,44 @@ const HomeHeader = () => {
         longitudeDelta: 0.0421,
     })
 
+    const updateLocation = async () => {
+        const uid = await AsyncStorage.getItem(STORAGE_KEYS.UID);
+        setLocationModal(false);
+        try {
+            const data = {
+                lat: region.latitude,
+                lng: region.longitude,
+            }
+            const feild = await firestore().collection('Users').doc(uid);
+            console.log(feild);
+            await feild.update({ location: data });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const getUserLocation = async () => {
+       try {
+        const uid = await AsyncStorage.getItem(STORAGE_KEYS.UID);
+		const foundUser = await firestore().collection('Users').doc(uid);
+        const result = await foundUser.get();
+        console.log(result?.data());
+        if(result?.data()){
+            setRegion({
+                ...region,
+                latitude: result.data().location?.lat ? parseFloat(result.data().location?.lat) : 28.698,
+                longitude: result.data().location?.lng ? parseFloat(result.data().location?.lng) : 28.698,
+            })
+        }
+       } catch (error) {
+        console.log(error);
+       }
+	};
+
     useEffect(() => {
-        // getUserLocation(setRegion)
-    }, [])
+        getUserLocation()
+    }, [locationModal])
+
     return (
         <View style={{ backgroundColor: colors[useColorScheme()]['background'], padding: 20, alignItems: 'center', elevation: 5 }}>
             <View style={{ flexDirection: 'row', alignItems: "baseline", justifyContent: 'space-between', paddingBottom: 20, width: WIDTH - 40 }}>
@@ -84,15 +122,7 @@ const HomeHeader = () => {
                                 minimumTrackTintColor={colors[useColorScheme()]['secondary']}
                             />
                         </View>
-                        <Button title={"Set Location"} onPress={() => {
-                            setLocationModal(false)
-                            // UPDATE USER LOCATION HERE
-                            // updateLogin(setLocationModal)
-                            // setSearchingLocation({
-                            //     location: region.latitude + ',' + region.longitude,
-                            //     radius: radius
-                            // })
-                        }} />
+                        <Button title={"Set Location"} onPress={updateLocation} />
                     </View>
                     <Image source={{ uri: icons[useColorScheme()]['location'] }} style={{ width: 25, height: 25, position: "absolute", left: WIDTH / 2 - WIDTH / 21, top: HEIGHT / 2 - HEIGHT / 11 }} resizeMode={"center"} />
 

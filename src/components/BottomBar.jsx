@@ -49,10 +49,6 @@ const tabs = [
 
 
 const BottomBar = () => {
-
-
-
-
 	const [activeTab, setActiveTab] = useState(0);
 	const [currentRoute, setCurrentRoute] = useState('');
 
