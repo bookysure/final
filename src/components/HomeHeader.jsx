@@ -31,7 +31,7 @@ const HomeHeader = () => {
                 lng: region.longitude,
             }
             const feild = await firestore().collection('Users').doc(uid);
-            console.log(feild);
+            console.info(feild);
             await feild.update({ location: data });
         } catch (error) {
             console.log(error);

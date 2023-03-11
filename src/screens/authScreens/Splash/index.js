@@ -14,21 +14,20 @@ const Splash = () => {
 
 	const checkToken = async () => {
 		try {
-			const token = await AsyncStorage.getItem(STORAGE_KEYS.TOKEN);
-			if (token) {
-				navigate('MainFlow', undefined);
-			}else{
-				navigate('LocationScreen', undefined)
-			}
+			await AsyncStorage.getItem(STORAGE_KEYS.TOKEN).then((token) => {
+				if (token) {
+					navigate('MainFlow', undefined);
+				} else {
+					navigate('GetStartedScreen', undefined)
+				}
+			})
 		} catch (error) {
 			console.log(error);
 		}
 	};
-	
+
 	useEffect(() => {
-		setTimeout(() => {
-			checkToken();
-		}, 2000);
+		checkToken();
 		getUsers();
 	}, []);
 

@@ -94,19 +94,3 @@ export const NotificationsView = ({ notifications }) => {
         </View>
     )
 }
-
-const sty = StyleSheet.create({
-    scrollBase: {
-        backgroundColor: 'white',
-        flex: 1,
-        position: 'relative',
-        bottom: -150,
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20
-    },
-    topBar: {
-    },
-    oneBar: {
-    },
-})
-

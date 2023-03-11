@@ -18,6 +18,7 @@ export const HomeStack = () => {
             >
                 <HomeStackNav.Screen component={Screens.HomeScreen} name='HomeScreen' />
                 <HomeStackNav.Screen component={Screens.NotificationsScreen} name='NotificationsScreen' />
+                <HomeStackNav.Screen component={Screens.PropertyScreen} name='PropertyScreen' />
             </HomeStackNav.Navigator>
         </>
     );

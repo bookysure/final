@@ -8,7 +8,7 @@ import { MainStack } from './mainStack';
 
 export const navigationRef = createNavigationContainerRef();
 
-export function navigate(name, params) {
+export function navigate(name, params=undefined) {
 	if (navigationRef.isReady()) {
 		navigationRef?.navigate(name, params);
 	}

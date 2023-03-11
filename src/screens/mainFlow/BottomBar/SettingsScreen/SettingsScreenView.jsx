@@ -4,8 +4,8 @@ import { FontAwesome, AntDesign } from '@expo/vector-icons';
 import { colors } from '../../../../constants/colors';
 import { HEIGHT, WIDTH } from '../../../../constants/dimensions';
 import { Icons } from '../../../../components';
-import { icons } from '../../../../constants/icons';
 import { Button, H5Text, H6Text, NormalText } from '../../../../widgets';
+import { navigate } from '../../../../navigation';
 
 const SettingsScreenView = ({
     data = [{ name: 'Raj', phone: '987654321' }]
@@ -39,7 +39,7 @@ const SettingsScreenView = ({
                         {/* Contact Us */}
                         <TouchableOpacity
                             onPress={() => {
-                                Linking.openURL(`mailto:support@bookysure.com`)
+                                navigate('ContactUsScreen')
                             }}
                             style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', width: WIDTH - 40, padding: 15, paddingRight: 30, elevation: 4, backgroundColor: colors[useColorScheme()]['background'], borderRadius: 15, marginTop: 10 }}>
                             <View style={{ flexDirection: 'row', alignItems: 'center', }}>

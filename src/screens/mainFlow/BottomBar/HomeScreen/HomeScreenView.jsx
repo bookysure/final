@@ -1,13 +1,141 @@
 import { useColorScheme, View, ScrollView, FlatList, TouchableOpacity, Image, SafeAreaView } from "react-native"
-import { HomeHeader } from "../../../../components"
+import { GridPropertyView, HomeHeader } from "../../../../components"
 import { colors } from "../../../../constants/colors"
 import { icons } from "../../../../constants/icons"
 import { H5Text, NormalText } from "../../../../widgets"
 import MarqueeText from "react-native-marquee";
-import { WIDTH } from "../../../../constants/dimensions"
+import { HEIGHT, WIDTH } from "../../../../constants/dimensions"
 import { ImageSlider } from "react-native-image-slider-banner";
 
 export const HomeScreenView = ({
+    bestPicks = [
+        {
+            img: "https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?cs=srgb&dl=pexels-pixabay-302769.jpg&fm=jpg",
+            title: 'New Building3',
+            price: '$45,345.00',
+            address: 'New Town Street, 3465, wri New York',
+            facilities: ['Bedroom', 'Bathroom', 'Square'],
+            images: [
+                {
+                    img: "https://dummyimage.com/600x400/000/fff",
+                },
+                {
+                    img: "https://media.istockphoto.com/id/1291177121/photo/low-angle-of-tall-building-in-manhattan.jpg?s=612x612&w=0&k=20&c=BwEWUSIac6s7p2wXsVJ6Pffuy8EWkaYh88HaRQ8ltis=",
+                },
+                {
+                    img: "https://img.freepik.com/free-vector/city-skyline-concept-illustration_114360-8923.jpg?w=2000"
+                }
+            ]
+        },
+        {
+            img: "https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?cs=srgb&dl=pexels-pixabay-302769.jpg&fm=jpg",
+            title: 'New Building4',
+            price: '$45,345.00',
+            address: 'New Town Street, 3465, wri New York',
+            facilities: ['Bedroom', 'Bathroom', 'Square'],
+            images: [
+                {
+                    img: "https://images.unsplash.com/photo-1503951458645-643d53bfd90f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGJ1aWxkaW5nc3xlbnwwfHwwfHw%3D&w=1000&q=80",
+                },
+                {
+                    img: "https://media.istockphoto.com/id/1291177121/photo/low-angle-of-tall-building-in-manhattan.jpg?s=612x612&w=0&k=20&c=BwEWUSIac6s7p2wXsVJ6Pffuy8EWkaYh88HaRQ8ltis=",
+                },
+                {
+                    img: "https://img.freepik.com/free-vector/city-skyline-concept-illustration_114360-8923.jpg?w=2000"
+                }
+            ]
+        },
+        {
+            img: "https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?cs=srgb&dl=pexels-pixabay-302769.jpg&fm=jpg",
+            title: 'New Building4',
+            price: '$45,345.00',
+            address: 'New Town Street, 3465, wri New York',
+            facilities: ['Bedroom', 'Bathroom', 'Square'],
+            images: [
+                {
+                    img: "https://images.unsplash.com/photo-1503951458645-643d53bfd90f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGJ1aWxkaW5nc3xlbnwwfHwwfHw%3D&w=1000&q=80",
+                },
+                {
+                    img: "https://media.istockphoto.com/id/1291177121/photo/low-angle-of-tall-building-in-manhattan.jpg?s=612x612&w=0&k=20&c=BwEWUSIac6s7p2wXsVJ6Pffuy8EWkaYh88HaRQ8ltis=",
+                },
+                {
+                    img: "https://img.freepik.com/free-vector/city-skyline-concept-illustration_114360-8923.jpg?w=2000"
+                }
+            ]
+        },
+        {
+            img: "https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?cs=srgb&dl=pexels-pixabay-302769.jpg&fm=jpg",
+            title: 'New Building4',
+            price: '$45,345.00',
+            address: 'New Town Street, 3465, wri New York',
+            facilities: ['Bedroom', 'Bathroom', 'Square'],
+            images: [
+                {
+                    img: "https://images.unsplash.com/photo-1503951458645-643d53bfd90f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGJ1aWxkaW5nc3xlbnwwfHwwfHw%3D&w=1000&q=80",
+                },
+                {
+                    img: "https://media.istockphoto.com/id/1291177121/photo/low-angle-of-tall-building-in-manhattan.jpg?s=612x612&w=0&k=20&c=BwEWUSIac6s7p2wXsVJ6Pffuy8EWkaYh88HaRQ8ltis=",
+                },
+                {
+                    img: "https://img.freepik.com/free-vector/city-skyline-concept-illustration_114360-8923.jpg?w=2000"
+                }
+            ]
+        },
+        {
+            img: "https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?cs=srgb&dl=pexels-pixabay-302769.jpg&fm=jpg",
+            title: 'New Building4',
+            price: '$45,345.00',
+            address: 'New Town Street, 3465, wri New York',
+            facilities: ['Bedroom', 'Bathroom', 'Square'],
+            images: [
+                {
+                    img: "https://images.unsplash.com/photo-1503951458645-643d53bfd90f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGJ1aWxkaW5nc3xlbnwwfHwwfHw%3D&w=1000&q=80",
+                },
+                {
+                    img: "https://media.istockphoto.com/id/1291177121/photo/low-angle-of-tall-building-in-manhattan.jpg?s=612x612&w=0&k=20&c=BwEWUSIac6s7p2wXsVJ6Pffuy8EWkaYh88HaRQ8ltis=",
+                },
+                {
+                    img: "https://img.freepik.com/free-vector/city-skyline-concept-illustration_114360-8923.jpg?w=2000"
+                }
+            ]
+        },
+        {
+            img: "https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?cs=srgb&dl=pexels-pixabay-302769.jpg&fm=jpg",
+            title: 'New Building4',
+            price: '$45,345.00',
+            address: 'New Town Street, 3465, wri New York',
+            facilities: ['Bedroom', 'Bathroom', 'Square'],
+            images: [
+                {
+                    img: "https://images.unsplash.com/photo-1503951458645-643d53bfd90f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGJ1aWxkaW5nc3xlbnwwfHwwfHw%3D&w=1000&q=80",
+                },
+                {
+                    img: "https://media.istockphoto.com/id/1291177121/photo/low-angle-of-tall-building-in-manhattan.jpg?s=612x612&w=0&k=20&c=BwEWUSIac6s7p2wXsVJ6Pffuy8EWkaYh88HaRQ8ltis=",
+                },
+                {
+                    img: "https://img.freepik.com/free-vector/city-skyline-concept-illustration_114360-8923.jpg?w=2000"
+                }
+            ]
+        },
+        {
+            img: "https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?cs=srgb&dl=pexels-pixabay-302769.jpg&fm=jpg",
+            title: 'New Building4',
+            price: '$45,345.00',
+            address: 'New Town Street, 3465, wri New York',
+            facilities: ['Bedroom', 'Bathroom', 'Square'],
+            images: [
+                {
+                    img: "https://images.unsplash.com/photo-1503951458645-643d53bfd90f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGJ1aWxkaW5nc3xlbnwwfHwwfHw%3D&w=1000&q=80",
+                },
+                {
+                    img: "https://media.istockphoto.com/id/1291177121/photo/low-angle-of-tall-building-in-manhattan.jpg?s=612x612&w=0&k=20&c=BwEWUSIac6s7p2wXsVJ6Pffuy8EWkaYh88HaRQ8ltis=",
+                },
+                {
+                    img: "https://img.freepik.com/free-vector/city-skyline-concept-illustration_114360-8923.jpg?w=2000"
+                }
+            ]
+        }
+    ],
     marquee = '\ud83d\udc4c Welcome to bookysure, we will help you in booking your slots. \ud83d\udc4c',
     sliders = [
         { img: "https://dummyimage.com/600x400/000/fff" }, { img: "https://source.unsplash.com/1024x768/?water" }, { img: "https://source.unsplash.com/1024x768/?birds" }
@@ -29,14 +157,15 @@ export const HomeScreenView = ({
             img: 'user',
             text: "Inspirations"
         }
-    ] }) => {
+    ]
+}) => {
     var theme = useColorScheme()
     console.info(sliders, '========')
     return (
         <View style={{ backgroundColor: colors[useColorScheme()]['background'], flex: 1 }}>
             <HomeHeader />
             <SafeAreaView>
-                <ScrollView contentContainerStyle={{ padding: 10 }} nestedScrollEnabled={true}>
+                <ScrollView contentContainerStyle={{ padding: 10, paddingBottom: HEIGHT / 3 - 20 }} nestedScrollEnabled={true}>
                     <View style={{ flex: 1, backgroundColor: colors[useColorScheme()]['background'] }}>
                         <MarqueeText style={{ fontSize: 12, backgroundColor: colors[useColorScheme()]['background'], color: colors[useColorScheme()]['opposite'], padding: 5 }} delay={1000} speed={0.25}>
                             {marquee}
@@ -87,6 +216,13 @@ export const HomeScreenView = ({
                         }}
                         text={"Best picks for you"}
                     />
+                    {
+                        bestPicks.map((item, index) => {
+                            return (
+                                <GridPropertyView item={item} index={index} />
+                            )
+                        })
+                    }
 
                 </ScrollView>
             </SafeAreaView>

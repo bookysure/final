@@ -18,6 +18,7 @@ export const SettingsStack = () => {
                 }}
             >
                 <SettingsStackNav.Screen component={Screens.SettingsScreen} name='SettingsScreen' />
+                <SettingsStackNav.Screen component={Screens.ContactUsScreen} name='ContactUsScreen' />
             </SettingsStackNav.Navigator>
         </>
     );
