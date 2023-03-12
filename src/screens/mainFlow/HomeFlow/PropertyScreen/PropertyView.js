@@ -7,7 +7,24 @@ import { ImageSlider } from "react-native-image-slider-banner";
 import { icons } from '../../../../constants/icons';
 // import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-const PropertyView = ({ route }) => {
+const PropertyView = ({
+    data = {
+        price: 100,
+        address: '#15, Karol Bagh, New Delhi',
+        title: 'New Manssion',
+        images: [
+            {
+                img: "https://dummyimage.com/600x400/000/fff",
+            },
+            {
+                img: "https://media.istockphoto.com/id/1291177121/photo/low-angle-of-tall-building-in-manhattan.jpg?s=612x612&w=0&k=20&c=BwEWUSIac6s7p2wXsVJ6Pffuy8EWkaYh88HaRQ8ltis=",
+            },
+            {
+                img: "https://img.freepik.com/free-vector/city-skyline-concept-illustration_114360-8923.jpg?w=2000"
+            }
+        ]
+    }
+}) => {
     const theme = useColorScheme();
     var scrollY = useState(new Animated.Value(0))[0]
     const SLIDER_HEIGHT_MIN = 0;
@@ -116,68 +133,68 @@ const PropertyView = ({ route }) => {
                         </View>
 
                         {/* ------------------------------------------------------------------------------------------- */}
-                        <View style={{ paddingHorizontal: 20, position: 'relative', }}>
+                        <View style={{ paddingHorizontal: 5, position: 'relative', }}>
                             <Text style={{ fontSize: 22, fontWeight: '00' }}>Description</Text>
                             <Text style={{ fontWeight: '200' }}>Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.</Text>
                             <TouchableOpacity><Text style={{ color: 'lightblue' }}>read more.....</Text></TouchableOpacity>
                         </View>
                         {/* ------------------------------------------------------------------------------------------- */}
-                        <View style={{ paddingHorizontal: 20, position: 'relative', }}>
+                        <View style={{ paddingHorizontal: 5, position: 'relative', }}>
                             <Text style={{ fontSize: 22, fontWeight: '00' }}>Description</Text>
                             <Text style={{ fontWeight: '200' }}>Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.</Text>
                             <TouchableOpacity><Text style={{ color: 'lightblue' }}>read more.....</Text></TouchableOpacity>
                         </View>
                         {/* ------------------------------------------------------------------------------------------- */}
-                        <View style={{ paddingHorizontal: 20, position: 'relative', }}>
+                        <View style={{ paddingHorizontal: 5, position: 'relative', }}>
                             <Text style={{ fontSize: 22, fontWeight: '00' }}>Description</Text>
                             <Text style={{ fontWeight: '200' }}>Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.</Text>
                             <TouchableOpacity><Text style={{ color: 'lightblue' }}>read more.....</Text></TouchableOpacity>
                         </View>
                         {/* ------------------------------------------------------------------------------------------- */}
-                        <View style={{ paddingHorizontal: 20, position: 'relative', }}>
+                        <View style={{ paddingHorizontal: 5, position: 'relative', }}>
                             <Text style={{ fontSize: 22, fontWeight: '00' }}>Description</Text>
                             <Text style={{ fontWeight: '200' }}>Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.</Text>
                             <TouchableOpacity><Text style={{ color: 'lightblue' }}>read more.....</Text></TouchableOpacity>
                         </View>
                         {/* ------------------------------------------------------------------------------------------- */}
-                        <View style={{ paddingHorizontal: 20, position: 'relative', }}>
+                        <View style={{ paddingHorizontal: 5, position: 'relative', }}>
                             <Text style={{ fontSize: 22, fontWeight: '00' }}>Description</Text>
                             <Text style={{ fontWeight: '200' }}>Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.</Text>
                             <TouchableOpacity><Text style={{ color: 'lightblue' }}>read more.....</Text></TouchableOpacity>
                         </View>
                         {/* ------------------------------------------------------------------------------------------- */}
-                        <View style={{ paddingHorizontal: 20, position: 'relative', }}>
+                        <View style={{ paddingHorizontal: 5, position: 'relative', }}>
                             <Text style={{ fontSize: 22, fontWeight: '00' }}>Description</Text>
                             <Text style={{ fontWeight: '200' }}>Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.</Text>
                             <TouchableOpacity><Text style={{ color: 'lightblue' }}>read more.....</Text></TouchableOpacity>
                         </View>
                         {/* ------------------------------------------------------------------------------------------- */}
-                        <View style={{ paddingHorizontal: 20, position: 'relative', }}>
+                        <View style={{ paddingHorizontal: 5, position: 'relative', }}>
                             <Text style={{ fontSize: 22, fontWeight: '00' }}>Description</Text>
                             <Text style={{ fontWeight: '200' }}>Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.</Text>
                             <TouchableOpacity><Text style={{ color: 'lightblue' }}>read more.....</Text></TouchableOpacity>
                         </View>
                         {/* ------------------------------------------------------------------------------------------- */}
-                        <View style={{ paddingHorizontal: 20, position: 'relative', }}>
+                        <View style={{ paddingHorizontal: 5, position: 'relative', }}>
                             <Text style={{ fontSize: 22, fontWeight: '00' }}>Description</Text>
                             <Text style={{ fontWeight: '200' }}>Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.</Text>
                             <TouchableOpacity><Text style={{ color: 'lightblue' }}>read more.....</Text></TouchableOpacity>
                         </View>
                         {/* ------------------------------------------------------------------------------------------- */}
-                        <View style={{ paddingHorizontal: 20, position: 'relative', }}>
+                        <View style={{ paddingHorizontal: 5, position: 'relative', }}>
                             <Text style={{ fontSize: 22, fontWeight: '00' }}>Description</Text>
                             <Text style={{ fontWeight: '200' }}>Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.</Text>
                             <TouchableOpacity><Text style={{ color: 'lightblue' }}>read more.....</Text></TouchableOpacity>
                         </View>
                         {/* ------------------------------------------------------------------------------------------- */}
-                        <View style={{ paddingHorizontal: 20, position: 'relative', }}>
+                        <View style={{ paddingHorizontal: 5, position: 'relative', }}>
                             <Text style={{ fontSize: 22, fontWeight: '00' }}>Description</Text>
                             <Text style={{ fontWeight: '200' }}>Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.</Text>
                             <TouchableOpacity><Text style={{ color: 'lightblue' }}>read more.....</Text></TouchableOpacity>
                         </View>
                         {/* ---------------------------------------------------------------------------------------------- */}
-                        <View style={{ backgroundColor: colors[useColorScheme()]['primary'], position: 'relative', alignItems: 'center', marginHorizontal: 100, paddingVertical: 10 }}>
-                            <Text style={{ fontSize: 18, fontWeight: '700', color: 'white' }}>Rent Now</Text>
+                        <View style={{flex:1, justifyContent:'center', alignItems:'center', padding:20 }}>
+                            <Button title="Rent Now" />
                         </View>
                     </View>
                 </View>

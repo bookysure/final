@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { PropertyView } from './PropertyView';
+import PropertyView from './PropertyView';
 
 const PropertyScreen = () => {
 

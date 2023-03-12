@@ -57,31 +57,28 @@ const BottomBar = () => {
 		setCurrentRoute(result?.name || 'HomeScreen');
 	}, [navigationRef?.current?.getCurrentRoute()]);
 
-
-	if (tabs.findIndex(o => o.screen === currentRoute > -1)) {
-		return (
-			<View style={{
-				position: 'absolute',
-				backgroundColor: colors[useColorScheme()]['primary'],
-				bottom: 15,
-				borderRadius: 50,
-				marginHorizontal: 10,
-				justifyContent: 'space-evenly',
-				alignItems: 'center',
-				flexDirection: 'row',
-				width: WIDTH - 20
-			}}>
-				{
-					tabs.sort((a, b) => { return a.index - b.index }).map((item, index) => {
-						return (
-							<BottomTabIcons key={index} title={item.label} icon={item.icon} name={item.name} focused={currentRoute == item.screen} currentRoute={navigationRef?.current?.getCurrentRoute()} />
-						)
-					})
-				}
-			</View >
-		);
-	}
-	return null;
+	return (
+		<View style={{
+			position: 'absolute',
+			backgroundColor: colors[useColorScheme()]['primary'],
+			bottom: 15,
+			borderRadius: 50,
+			marginHorizontal: 10,
+			justifyContent: 'space-evenly',
+			alignItems: 'center',
+			flexDirection: 'row',
+			width: WIDTH - 20,
+			display: tabs.findIndex(o => o.screen === currentRoute) > -1 ? 'flex' : 'none'
+		}}>
+			{
+				tabs.sort((a, b) => { return a.index - b.index }).map((item, index) => {
+					return (
+						<BottomTabIcons key={index} title={item.label} icon={item.icon} name={item.name} focused={currentRoute == item.screen} currentRoute={navigationRef?.current?.getCurrentRoute()} />
+					)
+				})
+			}
+		</View >
+	);
 };
 
 export default BottomBar;
