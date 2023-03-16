@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Animated, useColorScheme } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Animated, useColorScheme, } from 'react-native';
 import React, { useState, useEffect, useRef } from 'react';
-import { Button, Input, NormalText, H4Text, H6Text } from '../../../../widgets';
+import { Button, Input, NormalText, H4Text, H6Text, Touchable } from '../../../../widgets';
 import { HEIGHT, WIDTH } from '../../../../constants/dimensions';
 import { colors } from '../../../../constants/colors';
 import { ImageSlider } from 'react-native-image-slider-banner';
@@ -255,7 +255,10 @@ const PropertyView = ({
 									</Text>
 								</View>
 							</View>
-							<View
+							<Touchable
+                             onPress={()=>{
+                                actionSheetRef?.current?.show()
+                             }}
 								style={{
 									padding: 2,
 									margin: 5,
@@ -270,7 +273,7 @@ const PropertyView = ({
 									{' '}
 									{'View More 17 nearest Places'}{' '}
 								</Text>
-							</View>
+							</Touchable>
 						</View>
 
 						{/* ------------------------------------------------------------------------------------------- */}
@@ -385,7 +388,7 @@ const PropertyView = ({
 						</View>
 						{/* ---------------------------------------------------------------------------------------------- */}
 						<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>
-							<Button onPress={() => actionSheetRef?.current?.show()} title='Rent Now' />
+							<Button onPress={() => null} title='Rent Now' />
 						</View>
 					</View>
 				</View>
