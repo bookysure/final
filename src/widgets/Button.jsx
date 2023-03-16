@@ -1,7 +1,8 @@
 import { fonts } from '../helpers/styles';
-import { StyleSheet, View, TouchableOpacity, useColorScheme, Text, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, useColorScheme, Text, ActivityIndicator } from 'react-native';
 import { colors } from '../constants/colors';
 import { WIDTH } from '../constants/dimensions';
+import Touchable from './Touchable';
 
     /**
      *
@@ -18,7 +19,7 @@ import { WIDTH } from '../constants/dimensions';
 const Button = ({ disabled = false, leftIcon, title = '', onPress, loading, type, style }) => {
 
     return (
-        <TouchableOpacity
+        <Touchable
             onPress={
                 () => {
                     onPress ?
@@ -57,7 +58,7 @@ const Button = ({ disabled = false, leftIcon, title = '', onPress, loading, type
                     </Text>
             }
 
-        </TouchableOpacity>
+        </Touchable>
     );
 };
 

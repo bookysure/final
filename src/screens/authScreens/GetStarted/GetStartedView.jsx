@@ -1,5 +1,5 @@
 
-import { StyleSheet, View, Animated, useColorScheme, TouchableOpacity, Text as Text1 } from "react-native";
+import { StyleSheet, View, Animated, useColorScheme, Text as Text1 } from "react-native";
 import { Text } from "../../../components";
 import { Button } from "../../../widgets";
 import { colors } from "../../../constants/colors";

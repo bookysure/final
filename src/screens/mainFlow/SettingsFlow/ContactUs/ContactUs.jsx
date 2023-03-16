@@ -1,8 +1,8 @@
-import { FlatList, TouchableOpacity, useColorScheme, View } from "react-native"
+import { FlatList, useColorScheme, View } from "react-native"
 import { Icons } from "../../../../components";
 import { colors } from "../../../../constants/colors"
 import { WIDTH } from "../../../../constants/dimensions";
-import { H2Text, H4Text, H5Text } from "../../../../widgets"
+import { H2Text, H4Text, H5Text, Touchable } from "../../../../widgets"
 const ContactUsView = ({
     data = [
         {
@@ -30,10 +30,10 @@ const ContactUsView = ({
                 numColumns={2}
                 renderItem={({ item }) => {
                     return (
-                        <TouchableOpacity style={{ width: WIDTH / 3, height: WIDTH / 3, justifyContent: 'center', alignItems: 'center', backgroundColor: colors[theme]['background'], elevation: 10, padding: 10, margin: 10, borderRadius: 10 }}>
+                        <Touchable style={{ width: WIDTH / 3, height: WIDTH / 3, justifyContent: 'center', alignItems: 'center', backgroundColor: colors[theme]['background'], elevation: 10, padding: 10, margin: 10, borderRadius: 10 }}>
                             <Icons icon={item.icon} size={40} />
                             <H5Text text={item.label} />
-                        </TouchableOpacity>
+                        </Touchable>
                     )
                 }}
             />

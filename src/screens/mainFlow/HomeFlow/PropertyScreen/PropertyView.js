@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, Animated, useColorScheme, } from 'react-native';
+import { StyleSheet, Text, View, Image, Animated, useColorScheme, } from 'react-native';
 import React, { useState, useEffect, useRef } from 'react';
 import { Button, Input, NormalText, H4Text, H6Text, Touchable } from '../../../../widgets';
 import { HEIGHT, WIDTH } from '../../../../constants/dimensions';
@@ -283,9 +283,9 @@ const PropertyView = ({
 								Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel
 								explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.
 							</Text>
-							<TouchableOpacity>
+							<Touchable>
 								<Text style={{ color: 'lightblue' }}>read more.....</Text>
-							</TouchableOpacity>
+							</Touchable>
 						</View>
 						{/* ------------------------------------------------------------------------------------------- */}
 						<View style={{ paddingHorizontal: 5, position: 'relative' }}>
@@ -294,9 +294,9 @@ const PropertyView = ({
 								Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel
 								explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.
 							</Text>
-							<TouchableOpacity>
+							<Touchable>
 								<Text style={{ color: 'lightblue' }}>read more.....</Text>
-							</TouchableOpacity>
+							</Touchable>
 						</View>
 						{/* ------------------------------------------------------------------------------------------- */}
 						<View style={{ paddingHorizontal: 5, position: 'relative' }}>
@@ -305,9 +305,9 @@ const PropertyView = ({
 								Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel
 								explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.
 							</Text>
-							<TouchableOpacity>
+							<Touchable>
 								<Text style={{ color: 'lightblue' }}>read more.....</Text>
-							</TouchableOpacity>
+							</Touchable>
 						</View>
 						{/* ------------------------------------------------------------------------------------------- */}
 						<View style={{ paddingHorizontal: 5, position: 'relative' }}>
@@ -316,9 +316,9 @@ const PropertyView = ({
 								Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel
 								explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.
 							</Text>
-							<TouchableOpacity>
+							<Touchable>
 								<Text style={{ color: 'lightblue' }}>read more.....</Text>
-							</TouchableOpacity>
+							</Touchable>
 						</View>
 						{/* ------------------------------------------------------------------------------------------- */}
 						<View style={{ paddingHorizontal: 5, position: 'relative' }}>
@@ -327,9 +327,9 @@ const PropertyView = ({
 								Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel
 								explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.
 							</Text>
-							<TouchableOpacity>
+							<Touchable>
 								<Text style={{ color: 'lightblue' }}>read more.....</Text>
-							</TouchableOpacity>
+							</Touchable>
 						</View>
 						{/* ------------------------------------------------------------------------------------------- */}
 						<View style={{ paddingHorizontal: 5, position: 'relative' }}>
@@ -338,9 +338,9 @@ const PropertyView = ({
 								Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel
 								explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.
 							</Text>
-							<TouchableOpacity>
+							<Touchable>
 								<Text style={{ color: 'lightblue' }}>read more.....</Text>
-							</TouchableOpacity>
+							</Touchable>
 						</View>
 						{/* ------------------------------------------------------------------------------------------- */}
 						<View style={{ paddingHorizontal: 5, position: 'relative' }}>
@@ -349,9 +349,9 @@ const PropertyView = ({
 								Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel
 								explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.
 							</Text>
-							<TouchableOpacity>
+							<Touchable>
 								<Text style={{ color: 'lightblue' }}>read more.....</Text>
-							</TouchableOpacity>
+							</Touchable>
 						</View>
 						{/* ------------------------------------------------------------------------------------------- */}
 						<View style={{ paddingHorizontal: 5, position: 'relative' }}>
@@ -360,9 +360,9 @@ const PropertyView = ({
 								Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel
 								explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.
 							</Text>
-							<TouchableOpacity>
+							<Touchable>
 								<Text style={{ color: 'lightblue' }}>read more.....</Text>
-							</TouchableOpacity>
+							</Touchable>
 						</View>
 						{/* ------------------------------------------------------------------------------------------- */}
 						<View style={{ paddingHorizontal: 5, position: 'relative' }}>
@@ -371,9 +371,9 @@ const PropertyView = ({
 								Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel
 								explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.
 							</Text>
-							<TouchableOpacity>
+							<Touchable>
 								<Text style={{ color: 'lightblue' }}>read more.....</Text>
-							</TouchableOpacity>
+							</Touchable>
 						</View>
 						{/* ------------------------------------------------------------------------------------------- */}
 						<View style={{ paddingHorizontal: 5, position: 'relative' }}>
@@ -382,9 +382,9 @@ const PropertyView = ({
 								Nobis ea minus soluta asperiores unde id doloribus ratione quas animi modi vel
 								explicabo, velit sequi ullam eveniet rem, pariatur odio itaque.
 							</Text>
-							<TouchableOpacity>
+							<Touchable>
 								<Text style={{ color: 'lightblue' }}>read more.....</Text>
-							</TouchableOpacity>
+							</Touchable>
 						</View>
 						{/* ---------------------------------------------------------------------------------------------- */}
 						<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 }}>

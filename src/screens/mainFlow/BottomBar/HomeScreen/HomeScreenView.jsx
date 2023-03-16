@@ -1,8 +1,8 @@
-import { useColorScheme, View, ScrollView, FlatList, TouchableOpacity, Image, SafeAreaView } from "react-native"
-import { GridPropertyView, HomeHeader } from "../../../../components"
+import { useColorScheme, View, ScrollView, FlatList, Image, SafeAreaView } from "react-native"
+import { GridPropertyView, HomeHeader, Icons, SearchBar } from "../../../../components"
 import { colors } from "../../../../constants/colors"
 import { icons } from "../../../../constants/icons"
-import { H5Text, NormalText } from "../../../../widgets"
+import { H5Text, NormalText, Touchable } from "../../../../widgets"
 import MarqueeText from "react-native-marquee";
 import { HEIGHT, WIDTH } from "../../../../constants/dimensions"
 import { ImageSlider } from "react-native-image-slider-banner";
@@ -136,7 +136,7 @@ export const HomeScreenView = ({
             ]
         }
     ],
-    marquee = '\ud83d\udc4c Welcome to bookysure, we will help you in booking your slots. \ud83d\udc4c',
+    marquee = '\ud83d\udc4c Welcome to bookysure, hello this ii s world\'s largest platform we will help you in booking your slots. \ud83d\udc4c',
     sliders = [
         { img: "https://dummyimage.com/600x400/000/fff" }, { img: "https://source.unsplash.com/1024x768/?water" }, { img: "https://source.unsplash.com/1024x768/?birds" }
     ],
@@ -165,9 +165,9 @@ export const HomeScreenView = ({
         <View style={{ backgroundColor: colors[useColorScheme()]['background'], flex: 1 }}>
             <HomeHeader />
             <SafeAreaView>
-                <ScrollView contentContainerStyle={{ padding: 10, paddingBottom: HEIGHT / 3 - 20 }} nestedScrollEnabled={true}>
+                <ScrollView contentContainerStyle={{ padding: 10, paddingBottom: HEIGHT / 5 }} nestedScrollEnabled={true}>
                     <View style={{ flex: 1, backgroundColor: colors[useColorScheme()]['background'] }}>
-                        <MarqueeText style={{ fontSize: 12, backgroundColor: colors[useColorScheme()]['background'], color: colors[useColorScheme()]['opposite'], padding: 5 }} delay={1000} speed={0.25}>
+                        <MarqueeText style={{ fontSize: 12, backgroundColor: colors[useColorScheme()]['background'], color: colors[useColorScheme()]['opposite'], padding: 5 }} delay={1000} speed={1}>
                             {marquee}
                         </MarqueeText>
                     </View>
@@ -184,6 +184,9 @@ export const HomeScreenView = ({
                         />
 
                     </View>
+                    <View style={{ top: -20 }}>
+                        <SearchBar />
+                    </View>
                     <View style={{ marginTop: 20 }}>
                         <H5Text text={"Categories"} />
 
@@ -193,12 +196,12 @@ export const HomeScreenView = ({
                                     data={data}
                                     renderItem={({ item, index }) => {
                                         return (
-                                            <TouchableOpacity key={index} style={{ alignItems: 'center', width: WIDTH / 5 + 10, paddingVertical: 10, }}>
+                                            <Touchable key={index} style={{ alignItems: 'center', width: WIDTH / 5 + 10, paddingVertical: 10, }}>
                                                 <View style={{ justifyContent: 'center', alignItems: 'center', borderRadius: 1000, paddingBottom: 4 }}>
-                                                    <Image source={{ uri: icons[theme][item.img] }} style={{ width: 25, height: 25, }} resizeMode={'center'} />
+                                                    <Icons icon={item.img} size={25} />
                                                 </View>
                                                 <NormalText text={item.text} style={{ textAlign: 'center' }} />
-                                            </TouchableOpacity>
+                                            </Touchable>
                                         )
                                     }}
                                     numColumns={4}

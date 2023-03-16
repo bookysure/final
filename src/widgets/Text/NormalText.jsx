@@ -5,7 +5,7 @@ import { colors } from "../../constants/colors";
 
 const NormalText = ({ text, style }) => {
     return (
-        <Text style={[{ fontSize: 12, color: colors[useColorScheme()]['opposite'], textAlign: 'center' }, style]}>{text}</Text>
+        <Text style={[{ fontSize: 14, color: colors[useColorScheme()]['opposite'], textAlign: 'center' }, style]}>{text}</Text>
     )
 }
 

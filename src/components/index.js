@@ -7,5 +7,6 @@ import Label from './Label';
 import NotFound from './NotFound';
 import GridPropertyView from './GridPropertyView';
 import BottomSheet from './BottomSheet';
+import SearchBar from './SearchBar';
 
-export { GetStarted, BottomBar, HomeHeader, Breadcrumb, Icons, Label, NotFound, GridPropertyView, BottomSheet };
+export { GetStarted, BottomBar, HomeHeader, Breadcrumb, Icons, Label, NotFound, GridPropertyView, BottomSheet, SearchBar };

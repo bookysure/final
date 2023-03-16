@@ -3,22 +3,21 @@ import { View, TextInput, Text, useColorScheme, Image } from 'react-native'
 import { colors } from "../constants/colors";
 import { WIDTH } from "../constants/dimensions";
 
- const Input = ({ maxLength, value, placeholder, onChangeText, keyboardType, phone, autoFocus, icon }) => {
+const Input = ({ maxLength, value, placeholder, onChangeText, keyboardType, phone, autoFocus, icon, style }) => {
     return (
         <View>
             <View
-                style={{
-                    borderWidth: 1.5,
+                style={[{
+                    borderWidth: 1,
                     borderColor: colors[useColorScheme()]['secondary'],
                     width: WIDTH * 3 / 4,
                     paddingHorizontal: 10,
                     borderRadius: 40,
                     backgroundColor: colors[useColorScheme()]['background'],
-                    elevation: 2,
                     margin: 10,
                     flexDirection: 'row',
                     alignItems: 'center'
-                }}
+                }, style]}
             >
 
                 {

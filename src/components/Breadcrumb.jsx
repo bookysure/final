@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { View, useColorScheme, Animated, ImageBackground, TouchableOpacity } from 'react-native'
+import { View, useColorScheme, Animated, ImageBackground } from 'react-native'
 import { HEIGHT, WIDTH } from '../constants/dimensions'
 import { colors } from '../constants/colors'
 import Icons from './Icons'
-import { NormalText, H3Text, H6Text } from '../widgets'
+import { NormalText, H3Text, H6Text, Touchable } from '../widgets'
 import { goBack, navigate } from '../navigation'
 
 const Breadcrumb = ({
@@ -65,11 +65,11 @@ const Breadcrumb = ({
             }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', }}>
                     <Animated.View style={{ top: BACK_BUTTON }}>
-                        <TouchableOpacity onPress={() => {
+                        <Touchable onPress={() => {
                             goBack()
                         }}>
                             <Icons icon={'left-white'} />
-                        </TouchableOpacity>
+                        </Touchable>
 
                     </Animated.View>
                     <Animated.View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', transform: [{ scale: TITLE_SLIDE }] }}>

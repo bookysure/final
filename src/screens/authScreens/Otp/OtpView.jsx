@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { View, Text, useColorScheme, TextInput, TouchableOpacity } from 'react-native'
-import { Button, Input, H3Text, NormalText, H4Text } from '../../../widgets'
+import { View, Text, useColorScheme, TextInput } from 'react-native'
+import { Button, Input, H3Text, NormalText, H4Text, Touchable } from '../../../widgets'
 import { colors } from '../../../constants/colors';
 import { HEIGHT, WIDTH } from '../../../constants/dimensions';
 
@@ -58,11 +58,11 @@ export const OtpView = ({ otp, setOtp, handleSubmitOtp, phoneNumber, loading }) 
                 <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                     <NormalText text={"We sent a 6 digit one time password(OTP) to"} />
                     <H4Text text={"+91 " + phoneNumber.slice(0, 5) + "-" + phoneNumber.slice(5)} />
-                    <TouchableOpacity onPress={() => {
+                    <Touchable onPress={() => {
                         navigation.goBack()
                     }} style={{ marginTop: 5 }} disabled={resend == 0 ? false : true}>
                         <NormalText text={"Wrong Number? Click Here"} />
-                    </TouchableOpacity>
+                    </Touchable>
                 </View>
                 <View style={{ marginBottom: 30, alignItems: 'flex-end' }}>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: WIDTH - 100 }}>
@@ -224,11 +224,11 @@ export const OtpView = ({ otp, setOtp, handleSubmitOtp, phoneNumber, loading }) 
                         />
                     </View>
 
-                    <TouchableOpacity onPress={() => {
+                    <Touchable onPress={() => {
                         resendOtp(route.params?.phoneNumber, setResend)
                     }} style={{ marginTop: 5 }} disabled={resend == 0 ? false : true}>
                         <Text style={{ color: colors[useColorScheme()]['opposite'] + (resend ? '40' : ''), fontSize: 16, justifyContent: 'center' }}>Resend OTP{resend ? '(' + resend + ')' : ''}</Text>
-                    </TouchableOpacity>
+                    </Touchable>
                 </View>
 
                 <View>

@@ -1,3 +1,4 @@
 import NotificationsScreen from './NotificationsScreen';
 import PropertyScreen from './PropertyScreen';
-export default { NotificationsScreen, PropertyScreen };
+import AddPropertyScreen from './AddProperty';
+export default { NotificationsScreen, PropertyScreen, AddPropertyScreen };

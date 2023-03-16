@@ -1,7 +1,7 @@
-import { StyleSheet, TouchableOpacity, Text, useColorScheme, View } from "react-native";
+import { StyleSheet, Text, useColorScheme, View } from "react-native";
 import { colors } from "../../../constants/colors";
 import { HEIGHT } from "../../../constants/dimensions";
-import { Button, H1Text, H3Text, H6Text, Input, NormalText } from "../../../widgets";
+import { Button, H1Text, H3Text, H6Text, Input, NormalText, Touchable } from "../../../widgets";
 
 export const LoginView = ({ phoneNumber, setPhoneNumber, googleSignIn, sendOtpTophone, loading }) => {
     return (
@@ -58,13 +58,13 @@ export const LoginView = ({ phoneNumber, setPhoneNumber, googleSignIn, sendOtpTo
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <NormalText text={"By clicking you will accept all the "} />
                 <View style={{ flexDirection: 'row', alignItems: 'baseline' }}>
-                    <TouchableOpacity onPress={() => { that.navigation.navigate('PrivacyScreen') }}>
+                    <Touchable onPress={() => { that.navigation.navigate('PrivacyScreen') }}>
                         <H6Text text={"terms of use"} />
-                    </TouchableOpacity>
+                    </Touchable>
                     <NormalText text={" and "} />
-                    <TouchableOpacity onPress={() => { that.navigation.navigate('TermsScreen') }}>
+                    <Touchable onPress={() => { that.navigation.navigate('TermsScreen') }}>
                         <H6Text text={"privacy policy."} />
-                    </TouchableOpacity>
+                    </Touchable>
                 </View>
             </View>
 

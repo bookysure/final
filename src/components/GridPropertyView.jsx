@@ -1,14 +1,14 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, useColorScheme } from 'react-native'
+import { StyleSheet, Text, View, Image, useColorScheme } from 'react-native'
 import { navigate } from '../navigation'
 import { colors } from '../constants/colors'
 import { HEIGHT, WIDTH } from '../constants/dimensions'
-import { H5Text, H6Text, NormalText } from '../widgets'
+import { H5Text, H6Text, NormalText, Touchable } from '../widgets'
 import { Label } from '.'
 
 
 const GridPropertyView = ({ item, index }) => {
     return (
-        <TouchableOpacity
+        <Touchable
             onPress={() => {
                 navigate('PropertyScreen', { item })
             }}
@@ -41,7 +41,7 @@ const GridPropertyView = ({ item, index }) => {
                     </View>
                 </View>
             </View>
-        </TouchableOpacity>
+        </Touchable>
     )
 }
 

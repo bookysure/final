@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView, Linking, RefreshControl, useColorScheme } from 'react-native';
+import { View, Text, Image, ScrollView, Linking, RefreshControl, useColorScheme } from 'react-native';
 import { FontAwesome, AntDesign } from '@expo/vector-icons';
 import { colors } from '../../../../constants/colors';
 import { HEIGHT, WIDTH } from '../../../../constants/dimensions';
 import { Icons } from '../../../../components';
-import { Button, H5Text, H6Text, NormalText } from '../../../../widgets';
+import { Button, H5Text, H6Text, NormalText, Touchable } from '../../../../widgets';
 import { navigate } from '../../../../navigation';
 
 const SettingsScreenView = ({
@@ -37,7 +37,7 @@ const SettingsScreenView = ({
                     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
 
                         {/* Contact Us */}
-                        <TouchableOpacity
+                        <Touchable
                             onPress={() => {
                                 navigate('ContactUsScreen')
                             }}
@@ -51,16 +51,16 @@ const SettingsScreenView = ({
                             <View>
                                 <Icons icon={'right'} />
                             </View>
-                        </TouchableOpacity>
+                        </Touchable>
 
                     </View>
-                    <TouchableOpacity
+                    <Touchable
                         onPress={() => {
                             //LogOut Here
                         }}
                         style={{ backgroundColor: colors[useColorScheme()]['primary'], paddingHorizontal: 10, paddingVertical: 5, margin: 10, borderRadius: 20 }}>
                         <H6Text style={{ color: colors[useColorScheme()]['opposite'] }} text={'Logout'} />
-                    </TouchableOpacity>
+                    </Touchable>
                 </View>
             </ScrollView>
         </View>
