@@ -11,6 +11,7 @@ import H4Text from './Text/H4Text';
 import H5Text from './Text/H5Text';
 import H6Text from './Text/H6Text';
 import NormalText from './Text/NormalText';
+import Radio from './Radio';
 
 export {
 	Button,
@@ -25,5 +26,6 @@ export {
 	H4Text,
 	H5Text,
 	H6Text,
-	NormalText
+	NormalText,
+	Radio
 };
