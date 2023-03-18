@@ -14,7 +14,6 @@ export const AddPropertyView = () => {
                 <View style={{ flex: 1, width: WIDTH - 20 }}>
                     
                 </View>
-
             }
                 title={"Add Property"}
                 parent={"Home"}
