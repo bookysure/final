@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { HomeScreenView } from './HomeScreenView';
-
-const HomeScreen = () => {
+import {getAllRecordFromTable} from '../../../../helpers/DatabaseHelper';
+const HomeScreen = async () => {
 	var [bestPicks, setBestPicks] = useState([
 		{
 			img: "https://images.pexels.com/photos/302769/pexels-photo-302769.jpeg?cs=srgb&dl=pexels-pixabay-302769.jpg&fm=jpg",
@@ -130,6 +130,10 @@ const HomeScreen = () => {
 			]
 		}
 	])
+
+	var data= await getAllRecordFromTable("Properties");
+	console.log("Properties",data[0]._data);
+
 	return <HomeScreenView bestPicks={bestPicks} />;
 };
 
